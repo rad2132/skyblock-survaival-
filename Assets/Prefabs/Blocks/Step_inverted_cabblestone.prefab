@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 33219959285911316}
   - component: {fileID: 4059365660411400411}
   - component: {fileID: 1234404594661463434}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Step_inverted_cabblestone
   m_TagString: cube
   m_Icon: {fileID: 0}
@@ -120,10 +120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6459f215859a5be468c3d6ed57d97a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  uses: 0
-  isAlive: 1
-  idInItems: 13
+  RotateSpeed: 5
+  DroppedItemsLayerNumber: 7
+  DropOnAwake: 0
+  itemID: 0
+  triggerBox: {fileID: 0}
+  DroppedItemPrefab: {fileID: 0}
 --- !u!54 &1234404594661463434
 Rigidbody:
   m_ObjectHideFlags: 0

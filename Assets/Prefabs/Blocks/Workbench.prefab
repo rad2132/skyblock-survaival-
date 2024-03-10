@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Workbench
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
       propertyPath: m_LocalScale.x
       value: 1

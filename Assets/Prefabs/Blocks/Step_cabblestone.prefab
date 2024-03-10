@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 976348456264354971}
   - component: {fileID: 8368477948487926978}
   - component: {fileID: -8955912473313037299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Step_cabblestone
   m_TagString: cube
   m_Icon: {fileID: 0}
@@ -206,9 +206,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4269473231895242}
     m_Modifications:
+    - target: {fileID: 871764019822028287, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2812355314938376282, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
       propertyPath: m_Name
       value: BlockBreakingVisualiser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812355314938376282, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268757620882595929, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099813259919247393, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124646942622442999, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098442523173552618, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7868329817034231689, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
       propertyPath: m_LocalPosition.x

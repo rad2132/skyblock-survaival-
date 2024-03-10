@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8710515133582414244}
   - component: {fileID: 5636029192406487628}
   - component: {fileID: 6752415564022888016}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Intake
   m_TagString: cube
   m_Icon: {fileID: 0}
@@ -239,9 +239,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4788742629482438185}
     m_Modifications:
+    - target: {fileID: 871764019822028287, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2812355314938376282, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
       propertyPath: m_Name
       value: BlockBreakingVisualiser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812355314938376282, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268757620882595929, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099813259919247393, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124646942622442999, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098442523173552618, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7868329817034231689, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
       propertyPath: m_LocalScale.x
