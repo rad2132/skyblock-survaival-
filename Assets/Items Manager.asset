@@ -19,7 +19,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 4851307691875228750, guid: 2b803ab368415bd4890f847fb477621f, type: 3}
     Icon: {fileID: 21300000, guid: 1bc1e7e0372c00b4fa3bf7918ce6533b, type: 3}
-    Strength: 20
+    Strength: 10
     MinesBy:
     - Pickaxe
     DamageScale:
@@ -100,7 +100,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -7894631076144176281, guid: fcb3e646b7d902c47a0daea631b535e5, type: 3}
     Icon: {fileID: 21300000, guid: 93c27ac05955bf3468ebbf0378d9d148, type: 3}
-    Strength: 40
+    Strength: 10
     MinesBy:
     - pickaxe
     DamageScale:
@@ -202,7 +202,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -5975723004865907256, guid: 1ecc8fcc5bbbdb640a83a4aaccdaa9bb, type: 3}
     Icon: {fileID: 21300000, guid: 2b0f41a3c84a2184795e87c7ffc7c525, type: 3}
-    Strength: 20
+    Strength: 10
     MinesBy: []
     DamageScale:
     - 0.5
