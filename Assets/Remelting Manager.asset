@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed21f9d554aec1741a8e8953d7b84b4f, type: 3}
+  m_Name: Remelting Manager
+  m_EditorClassIdentifier: 
+  FuelVariants:
+  - Item: {fileID: -5975723004865907256, guid: 1ecc8fcc5bbbdb640a83a4aaccdaa9bb, type: 3}
+    BurningTime: 30
+  Recipes:
+  - RawMaterial: {fileID: 256915029944668310, guid: bc40618d860e16747a691538bdfeee66, type: 3}
+    Result: {fileID: 7941256623308078384, guid: 841bc48db4de9834bb3484985d3cb1ff, type: 3}
+    MeltingTime: 1

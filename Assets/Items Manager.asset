@@ -1,0 +1,449 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46926e6ee4b3d3641bb899a60ff00817, type: 3}
+  m_Name: Items Manager
+  m_EditorClassIdentifier: 
+  items:
+  - name: Cabblestone
+    StackSize: 64
+    ID: 0
+    ItemType: 0
+    ItemPrefab: {fileID: 4851307691875228750, guid: 2b803ab368415bd4890f847fb477621f, type: 3}
+    Icon: {fileID: 21300000, guid: 1bc1e7e0372c00b4fa3bf7918ce6533b, type: 3}
+    Strength: 20
+    MinesBy:
+    - Pickaxe
+    DamageScale:
+    - 1.3
+    - 0.7
+    - 1.2
+    - 1.5
+    - 1.5
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: dirt
+    StackSize: 64
+    ID: 1
+    ItemType: 0
+    ItemPrefab: {fileID: 256915029944668310, guid: bc40618d860e16747a691538bdfeee66, type: 3}
+    Icon: {fileID: 21300000, guid: bc34d44bfa3965948b6c34403d806d18, type: 3}
+    Strength: 6
+    MinesBy: []
+    DamageScale:
+    - 1.2
+    - 1.2
+    - 0.5
+    - 0.8
+    - 1.4
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: Grass
+    StackSize: 64
+    ID: 2
+    ItemType: 0
+    ItemPrefab: {fileID: 6985166005208549746, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
+    Icon: {fileID: 21300000, guid: bc34d44bfa3965948b6c34403d806d18, type: 3}
+    Strength: 10
+    MinesBy: []
+    DamageScale:
+    - 1.2
+    - 1
+    - 0.5
+    - 1.3
+    - 1.3
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: hay
+    StackSize: 64
+    ID: 3
+    ItemType: 0
+    ItemPrefab: {fileID: -4290844981082466977, guid: c4f3d3ac155b34a4191f1207719b2b0b, type: 3}
+    Icon: {fileID: 21300000, guid: 2500f03d303f94b4e977ab80cdd284d8, type: 3}
+    Strength: 10
+    MinesBy: []
+    DamageScale:
+    - 1.2
+    - 1.2
+    - 1
+    - 0.7
+    - 1.2
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: iron
+    StackSize: 64
+    ID: 4
+    ItemType: 0
+    ItemPrefab: {fileID: -7894631076144176281, guid: fcb3e646b7d902c47a0daea631b535e5, type: 3}
+    Icon: {fileID: 21300000, guid: 93c27ac05955bf3468ebbf0378d9d148, type: 3}
+    Strength: 40
+    MinesBy:
+    - pickaxe
+    DamageScale:
+    - 1
+    - 0.5
+    - 1
+    - 1.2
+    - 1.4
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: leaves
+    StackSize: 0
+    ID: 5
+    ItemType: 0
+    ItemPrefab: {fileID: -8335180721960064814, guid: f4e2dbe5bcefcb849bd3b83478f8a1f4, type: 3}
+    Icon: {fileID: 21300000, guid: c97686f36e6b33347865c189006b009e, type: 3}
+    Strength: 6
+    MinesBy: []
+    DamageScale:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: 'brick_stone '
+    StackSize: 64
+    ID: 6
+    ItemType: 0
+    ItemPrefab: {fileID: -660802507454951632, guid: 19cb69f14d386394a959e62ce7c59a27, type: 3}
+    Icon: {fileID: 21300000, guid: cb49e0f76b6b48843ac355acd97f06ec, type: 3}
+    Strength: 0
+    MinesBy:
+    - pickaxe
+    DamageScale:
+    - 1.3
+    - 0
+    - 1
+    - 1.2
+    - 1.2
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: whiteWool
+    StackSize: 64
+    ID: 7
+    ItemType: 0
+    ItemPrefab: {fileID: -961868206219089218, guid: cd0c1043168d42b4eac97790bf72b6a4, type: 3}
+    Icon: {fileID: 21300000, guid: ba6cb810927bef842990c784891e57e1, type: 3}
+    Strength: 6
+    MinesBy: []
+    DamageScale:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: Qak
+    StackSize: 64
+    ID: 8
+    ItemType: 0
+    ItemPrefab: {fileID: 1957332200928059749, guid: 54815cf2b97295c479f9e98eb6cb970d, type: 3}
+    Icon: {fileID: 21300000, guid: cf676189333681b4e8def956216a8930, type: 3}
+    Strength: 20
+    MinesBy: []
+    DamageScale:
+    - 0.5
+    - 1
+    - 1.2
+    - 1.2
+    - 1.2
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: wood_qak
+    StackSize: 64
+    ID: 9
+    ItemType: 0
+    ItemPrefab: {fileID: -5975723004865907256, guid: 1ecc8fcc5bbbdb640a83a4aaccdaa9bb, type: 3}
+    Icon: {fileID: 21300000, guid: 2b0f41a3c84a2184795e87c7ffc7c525, type: 3}
+    Strength: 20
+    MinesBy: []
+    DamageScale:
+    - 0.5
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: dry_farm
+    StackSize: 64
+    ID: 10
+    ItemType: 0
+    ItemPrefab: {fileID: 8618898802309473388, guid: 11eb250f63a00f24987a495299c012f2, type: 3}
+    Icon: {fileID: 21300000, guid: bc34d44bfa3965948b6c34403d806d18, type: 3}
+    Strength: 6
+    MinesBy: []
+    DamageScale:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: wet_farm
+    StackSize: 64
+    ID: 11
+    ItemType: 0
+    ItemPrefab: {fileID: 4243380313371510213, guid: 5e6e4365edbba694fbd44db775474b15, type: 3}
+    Icon: {fileID: 21300000, guid: bc34d44bfa3965948b6c34403d806d18, type: 3}
+    Strength: 6
+    MinesBy: []
+    DamageScale:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: Rock
+    StackSize: 64
+    ID: 12
+    ItemType: 0
+    ItemPrefab: {fileID: -377979095869692444, guid: ee0396e17fef9ae46969364d6318de2a, type: 3}
+    Icon: {fileID: 21300000, guid: 1bc1e7e0372c00b4fa3bf7918ce6533b, type: 3}
+    Strength: 10
+    MinesBy:
+    - pickaxe
+    DamageScale:
+    - 1
+    - 0.5
+    - 1.2
+    - 1.2
+    - 1.2
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: Wood_oak
+    StackSize: 64
+    ID: 13
+    ItemType: 0
+    ItemPrefab: {fileID: 5505445380191445636, guid: 5331810177b9ea44da21f749f81b620e, type: 3}
+    Icon: {fileID: 21300000, guid: 32530c79eb9bf0448b331476c0dc2116, type: 3}
+    Strength: 10
+    MinesBy: []
+    DamageScale:
+    - 0.5
+    - 1
+    - 1
+    - 1.2
+    - 1.2
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: steep_oak
+    StackSize: 64
+    ID: 14
+    ItemType: 0
+    ItemPrefab: {fileID: 5408302826005286982, guid: 1fb5e0b5ddceb02489c43e43883c0e49, type: 3}
+    Icon: {fileID: 21300000, guid: f0d3cab1c37b03e439e99c6701235b58, type: 3}
+    Strength: 10
+    MinesBy: []
+    DamageScale:
+    - 0.5
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: intake
+    StackSize: 64
+    ID: 15
+    ItemType: 0
+    ItemPrefab: {fileID: 8710515133582414244, guid: ecd98b2fd78ea8040b7f1e0931b0e581, type: 3}
+    Icon: {fileID: 21300000, guid: 9bb4aee7f070d6746b69c1a1e2df9345, type: 3}
+    Strength: 10
+    MinesBy: []
+    DamageScale:
+    - 0.5
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: door
+    StackSize: 64
+    ID: 16
+    ItemType: 0
+    ItemPrefab: {fileID: -3016682558411840531, guid: 4ae6687a895ab384b92b073fa1ce43b5, type: 3}
+    Icon: {fileID: 21300000, guid: f44d7600ca24cc047b76d81978ac8060, type: 3}
+    Strength: 6
+    MinesBy: []
+    DamageScale:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: haif
+    StackSize: 64
+    ID: 17
+    ItemType: 0
+    ItemPrefab: {fileID: -624515368964802308, guid: f422b7eae8402a04cbd60b28b6c1d2a7, type: 3}
+    Icon: {fileID: 21300000, guid: 898cc45d79509164e93710214951abf9, type: 3}
+    Strength: 0
+    MinesBy:
+    - pickaxe
+    DamageScale:
+    - 1
+    - 0.5
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: step_cabblestone
+    StackSize: 64
+    ID: 18
+    ItemType: 0
+    ItemPrefab: {fileID: 976348456264354971, guid: 8f4f6265f48926a46a86f8d3ace56df0, type: 3}
+    Icon: {fileID: 21300000, guid: 8ec5520ebe6e72243af203d1c6448efc, type: 3}
+    Strength: 10
+    MinesBy:
+    - pickexa
+    DamageScale:
+    - 1
+    - 0.5
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: graver
+    StackSize: 64
+    ID: 19
+    ItemType: 0
+    ItemPrefab: {fileID: 4871261829308663063, guid: 022ad5e6127e4d24891db7e753d74354, type: 3}
+    Icon: {fileID: 21300000, guid: afc0d3079d415e447a28730bb20340b9, type: 3}
+    Strength: 6
+    MinesBy: []
+    DamageScale:
+    - 1
+    - 1
+    - 0.7
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: 
+    StackSize: 0
+    ID: 0
+    ItemType: 0
+    ItemPrefab: {fileID: 0}
+    Icon: {fileID: 0}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: 
+    StackSize: 0
+    ID: 0
+    ItemType: 0
+    ItemPrefab: {fileID: 0}
+    Icon: {fileID: 0}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
