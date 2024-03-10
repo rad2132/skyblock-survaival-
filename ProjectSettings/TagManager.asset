@@ -3,17 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - cube
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Blocks
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Dropped Blocks
+  - NPC's
   - 
   - 
   - 
