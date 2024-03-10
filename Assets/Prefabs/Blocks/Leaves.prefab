@@ -183,9 +183,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4101347452420600}
     m_Modifications:
+    - target: {fileID: 871764019822028287, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2812355314938376282, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
       propertyPath: m_Name
       value: BlockBreakingVisualiser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812355314938376282, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268757620882595929, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099813259919247393, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124646942622442999, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098442523173552618, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7868329817034231689, guid: afdb600533a08cf44b3ff416959c47f2, type: 3}
       propertyPath: m_LocalPosition.x

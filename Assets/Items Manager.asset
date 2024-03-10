@@ -419,29 +419,63 @@ MonoBehaviour:
     Damage: 0
     Satiety: 0
     SaturationTime: 0
-  - name: 
-    StackSize: 0
-    ID: 0
+  - name: crafting
+    StackSize: 64
+    ID: 20
     ItemType: 0
-    ItemPrefab: {fileID: 0}
-    Icon: {fileID: 0}
-    Strength: 0
+    ItemPrefab: {fileID: 5467113191153988219, guid: f2cd74f409752b748acf0e11238170a3, type: 3}
+    Icon: {fileID: 21300000, guid: 0cec206b391c139489873bce55978a87, type: 3}
+    Strength: 10
     MinesBy: []
-    DamageScale: []
+    DamageScale:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: furnace
+    StackSize: 64
+    ID: 21
+    ItemType: 0
+    ItemPrefab: {fileID: 1776955975245169486, guid: 5eea30ece5c61654cb8f5ecb52b4ec90, type: 3}
+    Icon: {fileID: 21300000, guid: 638cb4f776f1f0744a0de55cdc4da294, type: 3}
+    Strength: 10
+    MinesBy:
+    - pickaxe
+    DamageScale:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
     Satiety: 0
     SaturationTime: 0
   - name: 
-    StackSize: 0
-    ID: 0
+    StackSize: 64
+    ID: 22
     ItemType: 0
-    ItemPrefab: {fileID: 0}
-    Icon: {fileID: 0}
-    Strength: 0
-    MinesBy: []
-    DamageScale: []
+    ItemPrefab: {fileID: 8763265235103855189, guid: fcf6bccbf7dc20a4580336335fb4ab42, type: 3}
+    Icon: {fileID: 21300000, guid: 98b94df11809d894699abe963ab7b4ce, type: 3}
+    Strength: 10
+    MinesBy:
+    - pickaxe
+    DamageScale:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
