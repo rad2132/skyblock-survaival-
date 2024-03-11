@@ -19,7 +19,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 4851307691875228750, guid: 2b803ab368415bd4890f847fb477621f, type: 3}
     Icon: {fileID: 21300000, guid: 1bc1e7e0372c00b4fa3bf7918ce6533b, type: 3}
-    Strength: 20
+    Strength: 10
     MinesBy:
     - Pickaxe
     DamageScale:
@@ -100,7 +100,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -7894631076144176281, guid: fcb3e646b7d902c47a0daea631b535e5, type: 3}
     Icon: {fileID: 21300000, guid: 93c27ac05955bf3468ebbf0378d9d148, type: 3}
-    Strength: 40
+    Strength: 10
     MinesBy:
     - pickaxe
     DamageScale:
@@ -202,7 +202,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -5975723004865907256, guid: 1ecc8fcc5bbbdb640a83a4aaccdaa9bb, type: 3}
     Icon: {fileID: 21300000, guid: 2b0f41a3c84a2184795e87c7ffc7c525, type: 3}
-    Strength: 20
+    Strength: 10
     MinesBy: []
     DamageScale:
     - 0.5
@@ -460,7 +460,7 @@ MonoBehaviour:
     Damage: 0
     Satiety: 0
     SaturationTime: 0
-  - name: 
+  - name: chest
     StackSize: 64
     ID: 22
     ItemType: 0
@@ -479,5 +479,215 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Satiety: 0
+    SaturationTime: 0
+  - name: Wood_Axe
+    StackSize: 1
+    ID: 23
+    ItemType: 0
+    ItemPrefab: {fileID: 7623825910744830365, guid: f24b237c251fe8d43ab6bd32f64d73bd, type: 3}
+    Icon: {fileID: 21300000, guid: a44141eac8417464980c02471808d0f8, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 0
+    Damage: 3
+    Satiety: 0
+    SaturationTime: 0
+  - name: Stone_Axe
+    StackSize: 1
+    ID: 24
+    ItemType: 1
+    ItemPrefab: {fileID: 7941256623308078384, guid: 841bc48db4de9834bb3484985d3cb1ff, type: 3}
+    Icon: {fileID: 21300000, guid: 67779fba5f8b22d4cbba0af5350d9456, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 1
+    ToolType: 0
+    Damage: 5
+    Satiety: 0
+    SaturationTime: 0
+  - name: Iron_Axe
+    StackSize: 1
+    ID: 25
+    ItemType: 1
+    ItemPrefab: {fileID: 8763519596094733813, guid: 98b80c34245bc784e99038c207024862, type: 3}
+    Icon: {fileID: 21300000, guid: 87e8cd9cef0708740ac2ed8467bfd50a, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 0
+    Damage: 5
+    Satiety: 0
+    SaturationTime: 0
+  - name: Wood_Hoe
+    StackSize: 1
+    ID: 26
+    ItemType: 1
+    ItemPrefab: {fileID: 6833309754765141859, guid: 14c4af92e8bd9c34b9281fb6d4946c54, type: 3}
+    Icon: {fileID: 21300000, guid: dce2172f2fdea6141b53f3f4fb4ba457, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 2
+    Damage: 1
+    Satiety: 0
+    SaturationTime: 0
+  - name: Stone_Hoe
+    StackSize: 1
+    ID: 27
+    ItemType: 1
+    ItemPrefab: {fileID: 4121902868499153946, guid: 516dda61b7430974fbae8fd79b0e9926, type: 3}
+    Icon: {fileID: 21300000, guid: 260fec0238d351f408890cd1a4a93a4e, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 1
+    ToolType: 2
+    Damage: 2
+    Satiety: 0
+    SaturationTime: 0
+  - name: Iron_Hoe
+    StackSize: 1
+    ID: 28
+    ItemType: 1
+    ItemPrefab: {fileID: 1274708771134849983, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+    Icon: {fileID: 21300000, guid: 3b38574e8d266ea41877a655fae9c7a7, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 2
+    Damage: 3
+    Satiety: 0
+    SaturationTime: 0
+  - name: Wood_Pickaxe
+    StackSize: 1
+    ID: 29
+    ItemType: 1
+    ItemPrefab: {fileID: 21027775736313201, guid: 52a0a3aeab2626d46bbb679ed9abd71d, type: 3}
+    Icon: {fileID: 21300000, guid: fcc78a82ee991e34d908ab8841b178e4, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 3
+    Damage: 2
+    Satiety: 0
+    SaturationTime: 0
+  - name: Stone_Pickaxe
+    StackSize: 1
+    ID: 30
+    ItemType: 1
+    ItemPrefab: {fileID: 88361162193101181, guid: c9617a3211987224b947098fefec8b6c, type: 3}
+    Icon: {fileID: 21300000, guid: 33146aca726a77042bcb61252425e97a, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 1
+    ToolType: 3
+    Damage: 3
+    Satiety: 0
+    SaturationTime: 0
+  - name: Iron_Pickaxe
+    StackSize: 1
+    ID: 31
+    ItemType: 1
+    ItemPrefab: {fileID: 8578808904024146031, guid: b1523fb21e31caa4292104cffc7394ba, type: 3}
+    Icon: {fileID: 21300000, guid: 311f76c3ea90c864dbb6f1caa0f70333, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 3
+    Damage: 4
+    Satiety: 0
+    SaturationTime: 0
+  - name: Wood_Shovel
+    StackSize: 1
+    ID: 32
+    ItemType: 1
+    ItemPrefab: {fileID: 935803096438826039, guid: ddd0f990b9d3acc43b37bfca7968654c, type: 3}
+    Icon: {fileID: 21300000, guid: 0849c1072f4cd1f4dbfa198ebe274906, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 4
+    Damage: 1
+    Satiety: 0
+    SaturationTime: 0
+  - name: Stone_Shovel
+    StackSize: 1
+    ID: 33
+    ItemType: 1
+    ItemPrefab: {fileID: 5637681253965251659, guid: a31f48aedb0c6424db3128cb91d3d128, type: 3}
+    Icon: {fileID: 21300000, guid: 7a3ee40255957794f84a57372c2bb8f0, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 1
+    ToolType: 4
+    Damage: 2
+    Satiety: 0
+    SaturationTime: 0
+  - name: Iron_Shovel
+    StackSize: 1
+    ID: 34
+    ItemType: 1
+    ItemPrefab: {fileID: 7940946841251186428, guid: 1a133371156eaaf479836673ce9afe14, type: 3}
+    Icon: {fileID: 21300000, guid: 801bf0333a87c714191e85ca3dce0de6, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 1
+    ToolType: 4
+    Damage: 3
+    Satiety: 0
+    SaturationTime: 0
+  - name: Wood_Sword
+    StackSize: 1
+    ID: 35
+    ItemType: 1
+    ItemPrefab: {fileID: 5883213279342983332, guid: 9dce9b61cc3f3394994f1cdcb613aca2, type: 3}
+    Icon: {fileID: 21300000, guid: a234e424d96ff434aa4654fa8371df6c, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 1
+    Damage: 4
+    Satiety: 0
+    SaturationTime: 0
+  - name: Stone_Sword
+    StackSize: 1
+    ID: 36
+    ItemType: 1
+    ItemPrefab: {fileID: 9006147613867719399, guid: 2eb7b4b665f5f3e408e7638fc1fcb7fe, type: 3}
+    Icon: {fileID: 21300000, guid: 04b2fcadaf75bf341a4d1a7aacca0fce, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 1
+    ToolType: 1
+    Damage: 5
+    Satiety: 0
+    SaturationTime: 0
+  - name: Iron_Sword
+    StackSize: 1
+    ID: 37
+    ItemType: 1
+    ItemPrefab: {fileID: 8535116718498309385, guid: 40316a9b5fc78de4fb9459f31086e209, type: 3}
+    Icon: {fileID: 21300000, guid: b78c2e6bbedc8a843a2029cbae6937be, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 1
+    Damage: 6
     Satiety: 0
     SaturationTime: 0
