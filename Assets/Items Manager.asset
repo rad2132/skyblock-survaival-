@@ -40,7 +40,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 256915029944668310, guid: bc40618d860e16747a691538bdfeee66, type: 3}
     Icon: {fileID: 21300000, guid: bc34d44bfa3965948b6c34403d806d18, type: 3}
-    Strength: 6
+    Strength: 2
     MinesBy: []
     DamageScale:
     - 1.2
@@ -60,7 +60,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 6985166005208549746, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
     Icon: {fileID: 21300000, guid: bc34d44bfa3965948b6c34403d806d18, type: 3}
-    Strength: 10
+    Strength: 3
     MinesBy: []
     DamageScale:
     - 1.2
@@ -80,7 +80,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -4290844981082466977, guid: c4f3d3ac155b34a4191f1207719b2b0b, type: 3}
     Icon: {fileID: 21300000, guid: 2500f03d303f94b4e977ab80cdd284d8, type: 3}
-    Strength: 10
+    Strength: 6
     MinesBy: []
     DamageScale:
     - 1.2
@@ -100,7 +100,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -7894631076144176281, guid: fcb3e646b7d902c47a0daea631b535e5, type: 3}
     Icon: {fileID: 21300000, guid: 93c27ac05955bf3468ebbf0378d9d148, type: 3}
-    Strength: 10
+    Strength: 20
     MinesBy:
     - pickaxe
     DamageScale:
@@ -121,7 +121,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -8335180721960064814, guid: f4e2dbe5bcefcb849bd3b83478f8a1f4, type: 3}
     Icon: {fileID: 21300000, guid: c97686f36e6b33347865c189006b009e, type: 3}
-    Strength: 6
+    Strength: 1
     MinesBy:
     - noy
     DamageScale:
@@ -142,7 +142,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -660802507454951632, guid: 19cb69f14d386394a959e62ce7c59a27, type: 3}
     Icon: {fileID: 21300000, guid: cb49e0f76b6b48843ac355acd97f06ec, type: 3}
-    Strength: 0
+    Strength: 10
     MinesBy:
     - pickaxe
     DamageScale:
@@ -163,7 +163,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -961868206219089218, guid: cd0c1043168d42b4eac97790bf72b6a4, type: 3}
     Icon: {fileID: 21300000, guid: ba6cb810927bef842990c784891e57e1, type: 3}
-    Strength: 6
+    Strength: 2
     MinesBy: []
     DamageScale:
     - 1
@@ -183,7 +183,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 1957332200928059749, guid: 54815cf2b97295c479f9e98eb6cb970d, type: 3}
     Icon: {fileID: 21300000, guid: cf676189333681b4e8def956216a8930, type: 3}
-    Strength: 20
+    Strength: 6
     MinesBy: []
     DamageScale:
     - 0.5
@@ -203,7 +203,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -5975723004865907256, guid: 1ecc8fcc5bbbdb640a83a4aaccdaa9bb, type: 3}
     Icon: {fileID: 21300000, guid: 2b0f41a3c84a2184795e87c7ffc7c525, type: 3}
-    Strength: 10
+    Strength: 12
     MinesBy: []
     DamageScale:
     - 0.5
@@ -223,7 +223,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 8618898802309473388, guid: 11eb250f63a00f24987a495299c012f2, type: 3}
     Icon: {fileID: 21300000, guid: bc34d44bfa3965948b6c34403d806d18, type: 3}
-    Strength: 6
+    Strength: 4
     MinesBy: []
     DamageScale:
     - 1
@@ -243,7 +243,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 4243380313371510213, guid: 5e6e4365edbba694fbd44db775474b15, type: 3}
     Icon: {fileID: 21300000, guid: bc34d44bfa3965948b6c34403d806d18, type: 3}
-    Strength: 6
+    Strength: 4
     MinesBy: []
     DamageScale:
     - 1
@@ -284,7 +284,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 5505445380191445636, guid: 5331810177b9ea44da21f749f81b620e, type: 3}
     Icon: {fileID: 21300000, guid: 32530c79eb9bf0448b331476c0dc2116, type: 3}
-    Strength: 10
+    Strength: 6
     MinesBy: []
     DamageScale:
     - 0.5
@@ -304,7 +304,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 5408302826005286982, guid: 1fb5e0b5ddceb02489c43e43883c0e49, type: 3}
     Icon: {fileID: 21300000, guid: f0d3cab1c37b03e439e99c6701235b58, type: 3}
-    Strength: 10
+    Strength: 6
     MinesBy: []
     DamageScale:
     - 0.5
@@ -324,7 +324,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 8710515133582414244, guid: ecd98b2fd78ea8040b7f1e0931b0e581, type: 3}
     Icon: {fileID: 21300000, guid: 9bb4aee7f070d6746b69c1a1e2df9345, type: 3}
-    Strength: 10
+    Strength: 6
     MinesBy: []
     DamageScale:
     - 0.5
@@ -364,7 +364,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: -624515368964802308, guid: f422b7eae8402a04cbd60b28b6c1d2a7, type: 3}
     Icon: {fileID: 21300000, guid: 898cc45d79509164e93710214951abf9, type: 3}
-    Strength: 0
+    Strength: 10
     MinesBy:
     - pickaxe
     DamageScale:
@@ -406,7 +406,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 4871261829308663063, guid: 022ad5e6127e4d24891db7e753d74354, type: 3}
     Icon: {fileID: 21300000, guid: afc0d3079d415e447a28730bb20340b9, type: 3}
-    Strength: 6
+    Strength: 2
     MinesBy: []
     DamageScale:
     - 1
@@ -426,7 +426,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 5467113191153988219, guid: f2cd74f409752b748acf0e11238170a3, type: 3}
     Icon: {fileID: 21300000, guid: 0cec206b391c139489873bce55978a87, type: 3}
-    Strength: 10
+    Strength: 6
     MinesBy: []
     DamageScale:
     - 1
@@ -467,7 +467,7 @@ MonoBehaviour:
     ItemType: 0
     ItemPrefab: {fileID: 8763265235103855189, guid: fcf6bccbf7dc20a4580336335fb4ab42, type: 3}
     Icon: {fileID: 21300000, guid: 98b94df11809d894699abe963ab7b4ce, type: 3}
-    Strength: 10
+    Strength: 6
     MinesBy:
     - pickaxe
     DamageScale:
