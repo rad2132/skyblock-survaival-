@@ -122,7 +122,8 @@ MonoBehaviour:
     ItemPrefab: {fileID: -8335180721960064814, guid: f4e2dbe5bcefcb849bd3b83478f8a1f4, type: 3}
     Icon: {fileID: 21300000, guid: c97686f36e6b33347865c189006b009e, type: 3}
     Strength: 6
-    MinesBy: []
+    MinesBy:
+    - noy
     DamageScale:
     - 1
     - 1
