@@ -5,7 +5,6 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
-
     public Transform Hand;
     public List<InventorySlot> QuickAccessPanel;
     public List<InventorySlot> GeneralInventory;
@@ -111,16 +110,16 @@ public class Inventory : MonoBehaviour
 
         if (itemPrefab == null) return;
         Transform clone = Instantiate(itemPrefab.transform, Hand);
-        if (clone.CompareTag("cube"))
+        try
         {
             clone.GetComponent<Rigidbody>().isKinematic = true;
             List<Collider> colliders = clone.GetComponents<Collider>().ToList();
-            foreach(Collider collider in colliders)
+            foreach (Collider collider in colliders)
             {
                 collider.enabled = false;
             }
-            clone.localScale = Vector3.one * 0.3f;
+            clone.gameObject.layer = Hand.gameObject.layer;
         }
-        return;
+        catch { }
     }
 }

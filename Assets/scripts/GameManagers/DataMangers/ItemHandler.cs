@@ -9,7 +9,7 @@ public class ItemHandler : MonoBehaviour
     public int itemID;
     public Collider triggerBox;
     public ItemHandler DroppedItemPrefab;
-    private void Awake()
+    protected virtual void Awake()
     {
         enabled = false;
         if (DropOnAwake)
@@ -19,12 +19,12 @@ public class ItemHandler : MonoBehaviour
         else triggerBox.enabled = false;
 
     }
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         transform.Rotate(0f, RotateSpeed, 0f);
     }
 
-    public void OnDrop()
+    public virtual void OnDrop()
     {
         try { GetComponentInChildren<BlockBreakingVisualiser>().OnBreakingStop(); } catch { }
         enabled = true;
@@ -37,7 +37,7 @@ public class ItemHandler : MonoBehaviour
         gameObject.layer = DroppedItemsLayerNumber;
     }
 
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag != "Player" || isAlive || !enabled) return;
 

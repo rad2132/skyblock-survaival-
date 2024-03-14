@@ -100,8 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotateSpeed: 5
+  DroppedItemsLayerNumber: 7
   DropOnAwake: 0
-  itemID: 16
+  itemID: 38
   triggerBox: {fileID: 1591978059085173603}
   DroppedItemPrefab: {fileID: 0}
 --- !u!54 &4436933478526983803

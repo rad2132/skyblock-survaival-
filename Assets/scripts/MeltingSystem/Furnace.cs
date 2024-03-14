@@ -106,7 +106,6 @@ public class Furnace : MonoBehaviour, IInteractable
             }
         }
         else Debug.Log("melting");
-
     }
 
     public void OnInteract()

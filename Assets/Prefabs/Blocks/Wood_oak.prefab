@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4979152530383344}
   - component: {fileID: 23062350220446528}
+  - component: {fileID: 4090934593731723531}
   - component: {fileID: 65111436837455080}
   - component: {fileID: 33638990387740468}
-  - component: {fileID: -5975723004865907256}
   - component: {fileID: 4203612365792216488}
   - component: {fileID: 313942627779676687}
   m_Layer: 3
@@ -80,6 +80,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4090934593731723531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904350029872954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942fcdbc72faf5c428898b4cc2fab706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotateSpeed: 5
+  DroppedItemsLayerNumber: 7
+  DropOnAwake: 0
+  itemID: 9
+  triggerBox: {fileID: 313942627779676687}
+  DroppedItemPrefab: {fileID: 0}
 --- !u!65 &65111436837455080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -109,24 +127,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904350029872954}
   m_Mesh: {fileID: 4300000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
---- !u!114 &-5975723004865907256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904350029872954}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6459f215859a5be468c3d6ed57d97a6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotateSpeed: 5
-  DroppedItemsLayerNumber: 7
-  DropOnAwake: 0
-  itemID: 9
-  triggerBox: {fileID: 313942627779676687}
-  DroppedItemPrefab: {fileID: 0}
 --- !u!54 &4203612365792216488
 Rigidbody:
   m_ObjectHideFlags: 0

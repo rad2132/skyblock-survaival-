@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8335180721960064814}
   - component: {fileID: 5240940922631245552}
   - component: {fileID: 6376512207504147894}
+  - component: {fileID: 7408791293771052328}
   m_Layer: 3
   m_Name: Leaves
   m_TagString: cube
@@ -175,6 +176,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2, y: 2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7408791293771052328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861767947012644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7595bd487c431094a88b752b2e5a4a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinLifeTime: 30
+  MaxLifeTime: 120
+  dropItems:
+  - {fileID: -4290844981082466977, guid: c4f3d3ac155b34a4191f1207719b2b0b, type: 3}
+  - {fileID: -8335180721960064814}
+  - {fileID: 4836553514533484632, guid: 3d3228502d8d021499bddee3a8a9a9d3, type: 3}
+  AttachedLog: {fileID: 0}
 --- !u!1001 &8932901259217706780
 PrefabInstance:
   m_ObjectHideFlags: 0

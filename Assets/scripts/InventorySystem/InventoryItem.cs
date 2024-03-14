@@ -31,24 +31,24 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         _itemsCounter = GetComponentInChildren<Text>();
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public virtual void OnBeginDrag(PointerEventData eventData)
     {
         _slotIcon.raycastTarget = false;
         OriginalParent = transform.parent;
         transform.SetParent(DragItemsPanel.Instance.transform);
     }
-    public void OnDrag(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
         _slotIcon.raycastTarget = true;
         transform.SetParent(OriginalParent);
     }
 
-    public void SetItem(int itemID)
+    public virtual void SetItem(int itemID)
     {
         if (itemID == -1)
         {
@@ -68,8 +68,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         }
     }
 
-    public void OnCountChange(int count)
+    public virtual void OnCountChange(int count)
     {
+        if (_handlingItem == null) return;
         _handlingItem.Count += count;
         if (_handlingItem.Count == 1)
         {
@@ -85,7 +86,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
         _itemsCounter.text = _handlingItem.Count.ToString();
     }
-    public void ResetItem()
+    public virtual void ResetItem()
     {
         if (Inventory.Instance.SelectedSlot == _parentSlot)
         {
@@ -96,7 +97,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         _itemsCounter.text = string.Empty;
     }
 
-    public ItemData GetItemData()
+    public virtual ItemData GetItemData()
     {
         if (_handlingItem != null)
         {

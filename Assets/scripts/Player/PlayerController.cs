@@ -58,15 +58,14 @@ public class PlayerController : MonoBehaviour
 
         moveInputDeadZone = Mathf.Pow(Screen.height / moveInputDeadZone, 2);
     }
-
+    
     private void Update()
     {
-        
-            Debug.DrawRay(Head.position, transform.right * velocity.x * 200 + transform.up * -0.5f + transform.forward * velocity.z * 200, Color.green);
-            GetTouchInput();
+        GetTouchInput();
+    
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (rightFingerId != -1)
         {
@@ -74,7 +73,6 @@ public class PlayerController : MonoBehaviour
         }
         ApplyYMovement();
     }
-
     void GetTouchInput()
     {
         // Iterate through all the detected touches
@@ -104,7 +102,6 @@ public class PlayerController : MonoBehaviour
 
                     break;
                 case TouchPhase.Ended:
-                case TouchPhase.Canceled:
 
                     if (t.fingerId == leftFingerId)
                     {
@@ -123,7 +120,11 @@ public class PlayerController : MonoBehaviour
                     // Get input for looking around
                     if (t.fingerId == rightFingerId)
                     {
-                        lookInput = t.deltaPosition.normalized * cameraSensitivityMobile * Time.deltaTime;
+                        if (t.deltaPosition.magnitude >= 1.5f)
+                        {
+                            lookInput = t.deltaPosition.normalized * cameraSensitivityMobile * Time.deltaTime;
+                        }
+                        else lookInput = Vector2.zero;
                     }
 
                     break;
@@ -150,11 +151,16 @@ public class PlayerController : MonoBehaviour
 
     public void LookAroundPC(Vector2 input)
     {
-        LookAround(-input * cameraSensitivityPC);
+        input *= -cameraSensitivityPC;
+
+        cameraPitch = Mathf.Clamp(cameraPitch - input.y, -90f, 90f);
+        transformPitch = transformPitch - input.x;
+        cameraTransform.localRotation = Quaternion.Euler(-cameraPitch, 0, 0);
+        transform.rotation = Quaternion.Euler(0, transformPitch, 0);
     }
     public void Move(Vector2 input)
     {
-        
+
         input *= moveSpeed * Time.deltaTime;
         velocity.x = input.x;
         velocity.z = input.y;
@@ -202,18 +208,17 @@ public class PlayerController : MonoBehaviour
 
     private bool IsAbleToMove()
     {
-        if ( !characterController.isGrounded || !isBending)
+        if (!characterController.isGrounded || !isBending)
         {
             return true;
         }
         RaycastHit hit;
-        if (Physics.Raycast(Head.position, transform.right * velocity.x+transform.up * -0.5f + transform.forward * velocity.z,out hit , bendingHeight+0.5f, Obstacles))
+        if (Physics.Raycast(Head.position, transform.right * velocity.x + transform.up * -0.5f + transform.forward * velocity.z, out hit, bendingHeight + 0.5f, Obstacles))
         {
-            Debug.Log(hit.collider.name);
             return true;
         }
-        else 
-        { 
+        else
+        {
             return false;
         }
     }

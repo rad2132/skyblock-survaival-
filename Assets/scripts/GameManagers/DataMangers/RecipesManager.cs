@@ -17,46 +17,46 @@ public class RecipesManager : ScriptableObject
             resultReference = itemsManager.items[recipe.Result.itemID];
             if (recipe.SingleItemRequiered)
             {
-                if (upperLeftID == recipe.UpperLeft())
+                if (upperLeftID == recipe.UpperLeft() && upperLeftID != -1 )
                 {
                     return true;
                 }
 
-                if (upperCenterID == recipe.UpperCenter())
+                if (upperCenterID == recipe.UpperCenter() && upperCenterID != -1)
                 {
                    return true;
                 }
 
-                if (upperRightID == recipe.UpperRight())
+                if (upperRightID == recipe.UpperRight() && upperRightID != -1)
                 {
                    return true;
                 }
     
-                if (middleLeftID == recipe.MiddleLeft())
+                if (middleLeftID == recipe.MiddleLeft() && middleLeftID != -1 )
                 {
                     return true;
                 }
-                if (middleCenterID == recipe.MiddleCenter())
+                if (middleCenterID == recipe.MiddleCenter() && middleCenterID != -1)
                 {
                    return true;
                 }
                
-                if (middleLeftID == recipe.MiddleLeft())
+                if (middleRightID == recipe.MiddleRight() && middleRightID != -1)
                 {
                     return true;
                 }
                
-                if (lowerLeftID == recipe.LowerLeft())
+                if (lowerLeftID == recipe.LowerLeft() && lowerLeftID != -1 )
                 {
                     return true;
                 }
 
-                if (lowerCenterID == recipe.LowerCenter())
+                if (lowerCenterID == recipe.LowerCenter() && lowerCenterID != -1)
                 {
                     return true;
                 }
 
-                if (lowerRightID == recipe.LowerRight())
+                if (lowerRightID == recipe.LowerRight() && lowerRightID != -1)
                 {
                    
                     return true;
@@ -80,7 +80,7 @@ public class RecipesManager : ScriptableObject
                             if(middleCenterID == recipe.MiddleCenter())
                             {
 
-                                if(middleLeftID == recipe.MiddleLeft())
+                                if(middleRightID == recipe.MiddleRight())
                                 {
 
                                     if(lowerLeftID == recipe.LowerLeft())

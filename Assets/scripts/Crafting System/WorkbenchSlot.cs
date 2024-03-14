@@ -18,7 +18,11 @@ public class WorkbenchSlot : InventorySlot
             inventoryItem.OriginalParent = transform;
             InventoryItem = inventoryItem;
         }
-        Workbench.Instance.OnCraftTry();
+        Workbench.Instance.TryCraft();
+    }
+    public override void OnItemChanged(InventoryItem item)
+    {
+        Workbench.Instance.TryCraft();
     }
     public override InventoryItem GetHandlingItem()
     {

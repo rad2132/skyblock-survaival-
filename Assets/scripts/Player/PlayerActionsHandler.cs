@@ -62,6 +62,7 @@ public class PlayerActionsHandler : MonoBehaviour
             switch (t.phase)
             {
                 case TouchPhase.Began:
+                    Debug.Log("touch began");
                     isTouching = true;
                     if (GetSelectedItem().ItemType == ItemType.Food)
                     {
@@ -77,22 +78,22 @@ public class PlayerActionsHandler : MonoBehaviour
                         isMining = true;
                     }
                     break;
-
                 case TouchPhase.Moved:
 
-                    if (t.deltaPosition.magnitude >= 5f && touchTime < 0.15f)
+                    if (t.deltaPosition.magnitude >= 4f && touchTime < 0.15f)
                     {
+                        Debug.Log("cannot move");
                         isMining = false;
                         HandAnimator.SetBool("IsMining", false);
                     }
                     break;
-
 
                 case TouchPhase.Ended:
                     isTouching = false;
                     isMining = false;
                     isEating = false;
                     HandAnimator.SetBool("IsMining", false);
+                    HandAnimator.SetBool("IsEating", false);
                     try
                     {
                         miningBLock.GetComponentInChildren<BlockBreakingVisualiser>().OnBreakingStop();
@@ -138,11 +139,6 @@ public class PlayerActionsHandler : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            if (holdLMBTime < 0.2f)
-            {
-                OnLMBClick();
-            }
-
             holdLMBTime = 0;
             isHoldingLMB = false;
             try
@@ -188,11 +184,6 @@ public class PlayerActionsHandler : MonoBehaviour
         }
     }
 
-    private void OnLMBClick()
-    {
-        Hit();
-    }
-
     private void OnRMBClick()
     {
         ItemHandler blockInFront = GetBlockInfront();
@@ -208,9 +199,10 @@ public class PlayerActionsHandler : MonoBehaviour
 
     private void Hit()
     {
+        HandAnimator.SetTrigger("Hit");
         Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, MaxInteractionDistance,EnemiesLayer))
+        if (Physics.Raycast(ray, out hit, MaxInteractionDistance, EnemiesLayer))
         {
             if (hit.collider != null)
             {
@@ -237,13 +229,14 @@ public class PlayerActionsHandler : MonoBehaviour
         if (EatCooldown > 0)
         {
             EatCooldown -= Time.deltaTime;
-            Debug.Log("eating");
+            HandAnimator.SetBool("IsEating", true);
         }
         else
         {
             StarvingSystem.Instance.ChangeSatiety(GetSelectedItem().Satiety, GetSelectedItem().SaturationTime);
             PlayerInventory.SelectedSlot.GetHandlingItem().OnCountChange(-1);
             isEating = false;
+            HandAnimator.SetBool("IsEating", false);
             EatCooldown = 2f;
         }
         return true;
@@ -268,7 +261,7 @@ public class PlayerActionsHandler : MonoBehaviour
 
             miningBLock = blockInfront;
 
-            try { miningBLock.GetComponentInChildren<BlockBreakingVisualiser>().OnBreakingStart(); } catch { }
+            
 
             Item miningBlockData = ItemsDataHandler.Instance.Data.items[miningBLock.itemID];
 
@@ -280,7 +273,13 @@ public class PlayerActionsHandler : MonoBehaviour
                 MiningDamage = miningBlockData.DamageScale[WeaponsToID[selectedItem.ToolType]] * MatreialToDamage[selectedItem.ToolMaterial];
             }
             else MiningDamage = 1;
-
+            try 
+            {
+                BlockBreakingVisualiser breakingVisualiser = miningBLock.GetComponentInChildren<BlockBreakingVisualiser>();
+                breakingVisualiser.AnimationSpeed = MiningDamage / (miningBlockData.Strength / 5);
+                breakingVisualiser.OnBreakingStart();
+            }
+            catch { }
         }
         else
         {
@@ -333,7 +332,6 @@ public class PlayerActionsHandler : MonoBehaviour
 
         if (!Physics.Raycast(ray, out hit, MaxInteractionDistance, Obstacles)) return;
 
-
         if (Mathf.Abs(transform.position.x - hit.point.x) >= .7f ||
             Mathf.Abs(transform.position.y - hit.point.y) >= 1.06f ||
             Mathf.Abs(transform.position.z - hit.point.z) >= .7f)
@@ -371,14 +369,12 @@ public class PlayerActionsHandler : MonoBehaviour
             }
             try
             {
-
                 newCube = Instantiate(selectedItem.ItemPrefab.gameObject, pos, Quaternion.identity);
                 PlayerInventory.SelectedSlot.GetHandlingItem().OnCountChange(-1);
                 NavMeshSurfaceController.Instance.GenerateNavmesh();
             }
             catch { }
         }
-
     }
 
     private ItemHandler GetBlockInfront()

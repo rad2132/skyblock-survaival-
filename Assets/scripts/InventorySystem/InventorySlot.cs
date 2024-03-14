@@ -6,38 +6,40 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public int SlotNumber;
     public virtual void OnDrop(PointerEventData eventData)
     {
-        if (transform.childCount == 0)
+        try
         {
             InventoryItem newItem = eventData.pointerDrag.GetComponent<InventoryItem>();
-            newItem.OriginalParent = transform;
-        }
-        else
-        {
-            InventoryItem newItem = eventData.pointerDrag.GetComponent<InventoryItem>();
+            InventorySlot otherSlot = newItem.OriginalParent.GetComponent<InventorySlot>();
             InventoryItem coreItem = transform.GetComponentInChildren<InventoryItem>();
-            if(coreItem != null)
+
+            if (transform.childCount == 0)
             {
-                int newItemID = newItem.GetItemData().ID;
-                int newItemCount = newItem.GetItemData().Count-1;
-                int coreItemID = coreItem.GetItemData().ID;
-                int coreItemCount = coreItem.GetItemData().Count-1;
-
-                coreItem.SetItem(newItemID);
-                for (int i = newItemCount; i > 0; i--) 
-                {
-                    coreItem.OnCountChange(1);
-                }
-
-                newItem.SetItem(coreItemID);
-                for (int i = coreItemCount; i > 0; i--)
-                {
-                    newItem.OnCountChange(1);
-                }
-
+                newItem.OriginalParent = transform;
             }
-        }
-    }
+            else
+            {
+                if (coreItem != null)
+                {
+                    int newItemID = newItem.GetItemData().ID;
+                    int newItemCount = newItem.GetItemData().Count - 1;
+                    int coreItemID = coreItem.GetItemData().ID;
+                    int coreItemCount = coreItem.GetItemData().Count - 1;
 
+                    coreItem.SetItem(newItemID);
+                    coreItem.OnCountChange(newItemCount);
+
+                    newItem.SetItem(coreItemID);
+                    newItem.OnCountChange(coreItemCount);
+                }
+            }
+            coreItem.OriginalParent = otherSlot.transform;
+            otherSlot.OnItemChanged(coreItem);
+        }
+        catch { }
+    }
+    public virtual void OnItemChanged(InventoryItem item)
+    {
+    }
     public virtual InventoryItem GetHandlingItem()
     {
         return transform.GetComponentInChildren<InventoryItem>();

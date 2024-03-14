@@ -25,4 +25,4 @@ MonoBehaviour:
     _lowerRight: {fileID: 0}
     Result: {fileID: -5975723004865907256, guid: 1ecc8fcc5bbbdb640a83a4aaccdaa9bb, type: 3}
     ResultCount: 5
-    SingleItemRequiered: 1
+    SingleItemRequiered: 0

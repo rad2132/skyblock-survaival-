@@ -40,7 +40,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Looking"",
                     ""type"": ""Value"",
                     ""id"": ""7bef35bd-ae29-4cb9-96b8-5ce4ef58942e"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -132,7 +132,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""948e63cf-f4ef-49f5-90ad-1b949235d1f9"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""path"": ""<Pointer>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
