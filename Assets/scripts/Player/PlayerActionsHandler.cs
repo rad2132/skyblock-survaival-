@@ -5,6 +5,7 @@ public class PlayerActionsHandler : MonoBehaviour
     private ItemsDataManager _itemsManager;
     public LayerMask EnemiesLayer;
     public LayerMask Obstacles;
+    public LayerMask Liquids;
     public float MaxInteractionDistance;
     public int UnarmedDamage = 3;
     public Animator HandAnimator;
@@ -261,7 +262,7 @@ public class PlayerActionsHandler : MonoBehaviour
 
             miningBLock = blockInfront;
 
-            
+
 
             Item miningBlockData = ItemsDataHandler.Instance.Data.items[miningBLock.itemID];
 
@@ -273,7 +274,7 @@ public class PlayerActionsHandler : MonoBehaviour
                 MiningDamage = miningBlockData.DamageScale[WeaponsToID[selectedItem.ToolType]] * MatreialToDamage[selectedItem.ToolMaterial];
             }
             else MiningDamage = 1;
-            try 
+            try
             {
                 BlockBreakingVisualiser breakingVisualiser = miningBLock.GetComponentInChildren<BlockBreakingVisualiser>();
                 breakingVisualiser.AnimationSpeed = MiningDamage / (miningBlockData.Strength / 5);
@@ -286,7 +287,11 @@ public class PlayerActionsHandler : MonoBehaviour
             MiningBlockStrength -= (MiningDamage * Time.deltaTime);
             if (MiningBlockStrength <= 0)
             {
-                Remove(miningBLock.gameObject);
+                try
+                {
+                    Remove(miningBLock.gameObject);
+                }
+                catch { }
             }
         }
     }
@@ -369,9 +374,17 @@ public class PlayerActionsHandler : MonoBehaviour
             }
             try
             {
+                if(Physics.Raycast(ray, out hit, MaxInteractionDistance, Liquids))
+                {
+                    Liquid liquid = hit.collider.GetComponent<Liquid>();
+                    if(liquid != null)
+                    {
+                        liquid.OnLiquidDestroy();
+                    }
+                }
                 newCube = Instantiate(selectedItem.ItemPrefab.gameObject, pos, Quaternion.identity);
                 PlayerInventory.SelectedSlot.GetHandlingItem().OnCountChange(-1);
-                NavMeshSurfaceController.Instance.GenerateNavmesh();
+               // NavMeshSurfaceController.Instance.GenerateNavmesh();
             }
             catch { }
         }
