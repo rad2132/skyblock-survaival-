@@ -13,13 +13,15 @@ public class LiquidSource : Liquid
     private bool _ableToContinue = true;
     private void FixedUpdate()
     {
-        if(handlingBlocks.Count ==0) ContinueStream();
-        else if(_ableToContinue) StartCoroutine(OnStreamContinue());
+        if (AboutToDry) return;
+        if (handlingBlocks.Count == 0) ContinueStream();
+        else if (_ableToContinue) StartCoroutine(OnStreamContinue());
     }
     private IEnumerator OnStreamContinue()
     {
         _ableToContinue = false;
         yield return new WaitForSeconds(1f);
+        if (AboutToDry) yield break;
         handlingBlocks[handlingBlocks.Count - 1].ContinueStream();
         _ableToContinue = true;
     }
@@ -27,9 +29,16 @@ public class LiquidSource : Liquid
     {
         base.ContinueStream();
     }
+    public override void OnStreamChange()
+    {
+        handlingBlocks[0].OnLiquidDestroy();
+    }
     public override void OnLiquidDestroy()
     {
-        LiquidManager.Instance.AbortStream(handlingBlocks,DryTime);
+        if (handlingBlocks.Count > 0)
+        {
+            OnStreamChange();
+        }
         Destroy(gameObject);
     }
 

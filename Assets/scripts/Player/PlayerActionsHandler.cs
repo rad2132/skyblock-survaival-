@@ -118,7 +118,7 @@ public class PlayerActionsHandler : MonoBehaviour
                                 break;
                             }
                             Hit();
-                            Spawn();
+                            Spawn(GetSelectedItem().ItemPrefab.gameObject);
                         }
                     }
                     break;
@@ -194,8 +194,43 @@ public class PlayerActionsHandler : MonoBehaviour
             {
                 blockInFront.GetComponent<IInteractable>().OnInteract();
             }
-            else Spawn();
+            else if (GetSelectedItem().ID != -1 && GetSelectedItem().ItemType == ItemType.Block)
+            {
+                try
+                {
+                    Spawn(GetSelectedItem().ItemPrefab.gameObject);
+                }
+                catch { }
+                return;
+            }
         }
+        try
+        {
+            CollectLiquid(GetSelectedItem().ItemPrefab.GetComponent<Bucket>());
+        }
+        catch { }
+    }
+
+    private void CollectLiquid(Bucket bucket)
+    {
+        if(bucket == null) return;
+
+        if (bucket.ContainingLiquid == ContainingLiquid.Empty)
+        {
+            LiquidSource sourceInFront = GetLiquidSourceInFront();
+            if (sourceInFront != null)
+            {
+                PlayerInventory.SelectedSlot.GetHandlingItem().SetItem(sourceInFront.BucketOFLiquidID);
+                sourceInFront.OnLiquidDestroy();
+            }
+        }
+        else 
+        {
+            Spawn(bucket.handlingLiquid.gameObject); 
+            PlayerInventory.SelectedSlot.GetHandlingItem().SetItem(bucket.EmptyBucketID);
+        }
+
+        
     }
 
     private void Hit()
@@ -223,6 +258,7 @@ public class PlayerActionsHandler : MonoBehaviour
             }
         }
     }
+
     private bool Eat()
     {
         if (StarvingSystem.Instance.CurrentSatietyPoints == StarvingSystem.Instance.MaxSatietyPoints) return false;
@@ -299,6 +335,9 @@ public class PlayerActionsHandler : MonoBehaviour
     private void Remove(GameObject objectToRemove)
     {
         Item Object = _itemsManager.items[objectToRemove.GetComponent<ItemHandler>().itemID];
+        Vector3 blockPos = objectToRemove.transform.position;
+        RaycastHit hit;
+
         if (Object.ItemType == ItemType.Block)
         {
             Item selectedItem = GetSelectedItem();
@@ -322,16 +361,21 @@ public class PlayerActionsHandler : MonoBehaviour
             {
                 Destroy(objectToRemove);
             }
-            NavMeshSurfaceController.Instance.GenerateNavmesh();
+
+            if (Physics.Raycast(blockPos, Vector3.up, out hit, .5f, Liquids))
+            {
+                Liquid liquidBlock = hit.collider.GetComponent<Liquid>();
+                if (liquidBlock != null)
+                {
+                    liquidBlock.OnStreamChange();
+                }
+            }
         }
     }
 
-    private void Spawn()
+    private void Spawn(GameObject objectToSpawn)
     {
-        Item selectedItem = GetSelectedItem();
-
-        if (selectedItem.ItemPrefab == null || selectedItem.ItemType != ItemType.Block) return;
-
+        if (objectToSpawn == null) return;
         Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
         RaycastHit hit;
 
@@ -374,17 +418,16 @@ public class PlayerActionsHandler : MonoBehaviour
             }
             try
             {
-                if(Physics.Raycast(ray, out hit, MaxInteractionDistance, Liquids))
+                if (Physics.Raycast(ray, out hit, MaxInteractionDistance, Liquids))
                 {
                     Liquid liquid = hit.collider.GetComponent<Liquid>();
-                    if(liquid != null)
+                    if (liquid != null)
                     {
                         liquid.OnLiquidDestroy();
                     }
                 }
-                newCube = Instantiate(selectedItem.ItemPrefab.gameObject, pos, Quaternion.identity);
+                newCube = Instantiate(objectToSpawn, pos, Quaternion.identity);
                 PlayerInventory.SelectedSlot.GetHandlingItem().OnCountChange(-1);
-               // NavMeshSurfaceController.Instance.GenerateNavmesh();
             }
             catch { }
         }
@@ -397,6 +440,28 @@ public class PlayerActionsHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit, MaxInteractionDistance, Obstacles))
         {
             return hit.collider.GetComponent<ItemHandler>();
+        }
+        return null;
+    }
+
+    private LiquidSource GetLiquidSourceInFront()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, MaxInteractionDistance, Liquids))
+        {
+            return hit.collider.GetComponent<LiquidSource>();
+        }
+        return null;
+    }
+
+    private Liquid GetLiquidInFront()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, MaxInteractionDistance, Liquids))
+        {
+            return hit.collider.GetComponent<Liquid>();
         }
         return null;
     }

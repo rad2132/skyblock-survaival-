@@ -57,7 +57,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         }
 
         Item item = ItemsDataHandler.Instance.Data.items[itemID];
-
         _handlingItem = new ItemData(item.ID, 1);
         _slotIcon.sprite = item.Icon;
         _itemsCounter.text = string.Empty;

@@ -705,3 +705,45 @@ MonoBehaviour:
     Damage: 6
     Satiety: 10
     SaturationTime: 40
+  - name: Empty Bucket
+    StackSize: 1
+    ID: 39
+    ItemType: 3
+    ItemPrefab: {fileID: 1597247426547867973, guid: eaf208c2984edf243ae6545f72a8dc04, type: 3}
+    Icon: {fileID: 21300000, guid: b78c2e6bbedc8a843a2029cbae6937be, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 1
+    Damage: 6
+    Satiety: 10
+    SaturationTime: 40
+  - name: Bucket Of Water
+    StackSize: 1
+    ID: 40
+    ItemType: 3
+    ItemPrefab: {fileID: 1597247426547867973, guid: 39fe0a85f7cc2424b93ea7281961bd65, type: 3}
+    Icon: {fileID: 21300000, guid: b78c2e6bbedc8a843a2029cbae6937be, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 1
+    Damage: 6
+    Satiety: 10
+    SaturationTime: 40
+  - name: Bucket Of Lava
+    StackSize: 1
+    ID: 41
+    ItemType: 3
+    ItemPrefab: {fileID: 1597247426547867973, guid: 10f7956f990e4ab4e97cdf4c536c2855, type: 3}
+    Icon: {fileID: 21300000, guid: b78c2e6bbedc8a843a2029cbae6937be, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 1
+    Damage: 6
+    Satiety: 10
+    SaturationTime: 40
