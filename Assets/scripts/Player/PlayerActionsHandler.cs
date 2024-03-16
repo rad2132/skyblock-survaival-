@@ -6,6 +6,7 @@ public class PlayerActionsHandler : MonoBehaviour
     public LayerMask EnemiesLayer;
     public LayerMask Obstacles;
     public LayerMask Liquids;
+    public LayerMask Plants;
     public float MaxInteractionDistance;
     public int UnarmedDamage = 3;
     public Animator HandAnimator;
@@ -40,7 +41,7 @@ public class PlayerActionsHandler : MonoBehaviour
     }
     private void Update()
     {
-        CheckTouches();
+        //CheckTouches();
         GetMouseInput();
 
         if (isMining)
@@ -63,7 +64,6 @@ public class PlayerActionsHandler : MonoBehaviour
             switch (t.phase)
             {
                 case TouchPhase.Began:
-                    Debug.Log("touch began");
                     isTouching = true;
                     if (GetSelectedItem().ItemType == ItemType.Food)
                     {
@@ -157,6 +157,7 @@ public class PlayerActionsHandler : MonoBehaviour
         }
         if (holdLMBTime > 0.2f)
         {
+            CollectPlant();
             Mine();
         }
 
@@ -188,19 +189,40 @@ public class PlayerActionsHandler : MonoBehaviour
     private void OnRMBClick()
     {
         ItemHandler blockInFront = GetBlockInfront();
+        Item selectedItem = GetSelectedItem();
         if (blockInFront != null)
         {
             if (blockInFront.GetComponent<IInteractable>() != null)
             {
                 blockInFront.GetComponent<IInteractable>().OnInteract();
+                return;
             }
-            else if (GetSelectedItem().ID != -1 && GetSelectedItem().ItemType == ItemType.Block)
+
+            if (selectedItem.ID != -1 && selectedItem.ItemType == ItemType.Block)
             {
                 try
                 {
-                    Spawn(GetSelectedItem().ItemPrefab.gameObject);
+                    Spawn(selectedItem.ItemPrefab.gameObject);
                 }
                 catch { }
+                return;
+            }
+
+            if(selectedItem.ItemType == ItemType.Plant)
+            {
+                PlantHandler plantHandler =selectedItem.ItemPrefab.GetComponent<PlantHandler>();
+                if(plantHandler != null && plantHandler.IsPlantable(blockInFront))
+                {
+
+                    Ray ray = new Ray(blockInFront.transform.position, Vector3.up);
+                    if (!Physics.Raycast(ray, 0.5f, Obstacles))
+                    {
+
+                        PlantHandler newPlant = Instantiate(plantHandler,blockInFront.transform.position + Vector3.up,Quaternion.identity);
+                        newPlant.Plant();
+                        PlayerInventory.SelectedSlot.GetHandlingItem().OnCountChange(-1);
+                    }
+                }
                 return;
             }
         }
@@ -209,6 +231,21 @@ public class PlayerActionsHandler : MonoBehaviour
             CollectLiquid(GetSelectedItem().ItemPrefab.GetComponent<Bucket>());
         }
         catch { }
+    }
+
+    private void CollectPlant()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
+        RaycastHit hit;
+        if(Physics.Raycast(ray,out hit, MaxInteractionDistance, Plants))
+        {
+            Debug.Log(hit.collider.name);
+            PlantHandler plant = hit.collider.GetComponent<PlantHandler>();
+            if(plant != null)
+            {
+                plant.DestroyPlant();
+            }
+        }
     }
 
     private void CollectLiquid(Bucket bucket)
@@ -224,7 +261,7 @@ public class PlayerActionsHandler : MonoBehaviour
                 sourceInFront.OnLiquidDestroy();
             }
         }
-        else 
+        else if(GetBlockInfront()!= null)
         {
             Spawn(bucket.handlingLiquid.gameObject); 
             PlayerInventory.SelectedSlot.GetHandlingItem().SetItem(bucket.EmptyBucketID);
@@ -370,6 +407,14 @@ public class PlayerActionsHandler : MonoBehaviour
                     liquidBlock.OnStreamChange();
                 }
             }
+            if(Physics.Raycast(blockPos,Vector3.up, out hit, .5f, Plants))
+            {
+                PlantHandler plant = hit.collider.GetComponent<PlantHandler>();
+                if(plant != null)
+                {
+                    plant.DestroyPlant();
+                }
+            }
         }
     }
 
@@ -379,11 +424,14 @@ public class PlayerActionsHandler : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
         RaycastHit hit;
 
-        if (!Physics.Raycast(ray, out hit, MaxInteractionDistance, Obstacles)) return;
+        if (!Physics.Raycast(ray, out hit, MaxInteractionDistance, Obstacles))
+        {
+            return;
+        }
 
         if (Mathf.Abs(transform.position.x - hit.point.x) >= .7f ||
             Mathf.Abs(transform.position.y - hit.point.y) >= 1.06f ||
-            Mathf.Abs(transform.position.z - hit.point.z) >= .7f)
+            Mathf.Abs(transform.position.z - hit.point.z) >= .7f || objectToSpawn.GetComponent<LiquidSource>()!= null)
         {
 
             GameObject newCube;
@@ -451,17 +499,6 @@ public class PlayerActionsHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit, MaxInteractionDistance, Liquids))
         {
             return hit.collider.GetComponent<LiquidSource>();
-        }
-        return null;
-    }
-
-    private Liquid GetLiquidInFront()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, MaxInteractionDistance, Liquids))
-        {
-            return hit.collider.GetComponent<Liquid>();
         }
         return null;
     }

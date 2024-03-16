@@ -167,6 +167,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 8618898802309473388}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 3222404805242606345}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
       insertIndex: -1
@@ -174,15 +177,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5164219477186681511}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8618898802309473388}
   m_SourcePrefab: {fileID: 100100000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
 --- !u!1 &3060923291209874542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 799d1553e777b064da196b6922de22d7, type: 3}
   m_PrefabInstance: {fileID: 3060923291209906894}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8618898802309473388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3060923291209874542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6459f215859a5be468c3d6ed57d97a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotateSpeed: 5
+  DroppedItemsLayerNumber: 7
+  DropOnAwake: 0
+  itemID: 10
+  triggerBox: {fileID: 5421625368349805543}
+  DroppedItemPrefab: {fileID: 0}
 --- !u!65 &3222404805242606345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -252,24 +270,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8618898802309473388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3060923291209874542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6459f215859a5be468c3d6ed57d97a6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotateSpeed: 5
-  DroppedItemsLayerNumber: 7
-  DropOnAwake: 0
-  itemID: 10
-  triggerBox: {fileID: 5421625368349805543}
-  DroppedItemPrefab: {fileID: 0}
 --- !u!4 &3060923291210293326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 799d1553e777b064da196b6922de22d7, type: 3}

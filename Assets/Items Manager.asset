@@ -747,3 +747,31 @@ MonoBehaviour:
     Damage: 6
     Satiety: 10
     SaturationTime: 40
+  - name: Milit Seeds
+    StackSize: 1
+    ID: 42
+    ItemType: 4
+    ItemPrefab: {fileID: 7873659017899006821, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
+    Icon: {fileID: 21300000, guid: b78c2e6bbedc8a843a2029cbae6937be, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 1
+    Damage: 6
+    Satiety: 10
+    SaturationTime: 40
+  - name: Oak Seeds
+    StackSize: 1
+    ID: 43
+    ItemType: 4
+    ItemPrefab: {fileID: 7873659017899006821, guid: 068f731836577d34d84c43b2a45a2db1, type: 3}
+    Icon: {fileID: 21300000, guid: b78c2e6bbedc8a843a2029cbae6937be, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 1
+    Damage: 6
+    Satiety: 10
+    SaturationTime: 40

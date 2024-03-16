@@ -13,16 +13,4 @@ MonoBehaviour:
   m_Name: RecipesManager
   m_EditorClassIdentifier: 
   itemsManager: {fileID: 11400000, guid: 7cccbfbdece1734419b1578b505bc221, type: 2}
-  Recipes:
-  - _upperLeft: {fileID: 6985166005208549746, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
-    _upperCenter: {fileID: 0}
-    _uperRight: {fileID: 0}
-    _middleLeft: {fileID: 0}
-    _middleCenter: {fileID: 0}
-    _middleRight: {fileID: 0}
-    _lowerLeft: {fileID: 0}
-    _lowerCenter: {fileID: 0}
-    _lowerRight: {fileID: 0}
-    Result: {fileID: -5975723004865907256, guid: 1ecc8fcc5bbbdb640a83a4aaccdaa9bb, type: 3}
-    ResultCount: 5
-    SingleItemRequiered: 0
+  Recipes: []

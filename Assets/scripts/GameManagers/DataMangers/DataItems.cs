@@ -56,5 +56,6 @@ public enum ItemType
     Block,
     Tool,
     Food,
-    Component
+    Component,
+    Plant
 }

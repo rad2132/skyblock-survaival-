@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71aacbdc51165564ba0705689a4412ee, type: 3}
+  m_Name: Farming Manager
+  m_EditorClassIdentifier: 
+  Plants:
+  - Name: milit
+    ID: 0
+    PlantableBlocks:
+    - {fileID: 8618898802309473388, guid: 11eb250f63a00f24987a495299c012f2, type: 3}
+    - {fileID: 4243380313371510213, guid: 5e6e4365edbba694fbd44db775474b15, type: 3}
+    Phases:
+    - PhaseMesh: {fileID: 667981447760509138, guid: 3c1f9fefb30f931479dd75bb8d132d75, type: 3}
+      Duration: 5
+      Drop:
+      - {fileID: 7873659017899006821, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
+    - PhaseMesh: {fileID: 5063018358746981122, guid: 5bf97128f18072f409a167a4bd846c9d, type: 3}
+      Duration: 4
+      Drop:
+      - {fileID: 7873659017899006821, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
+    - PhaseMesh: {fileID: 3174921311463430480, guid: 20309430c12821d489724126a6afff9e, type: 3}
+      Duration: 0
+      Drop:
+      - {fileID: 7873659017899006821, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
+      - {fileID: 5467113191153988219, guid: f2cd74f409752b748acf0e11238170a3, type: 3}
+  - Name: Oak
+    ID: 1
+    PlantableBlocks:
+    - {fileID: 8618898802309473388, guid: 11eb250f63a00f24987a495299c012f2, type: 3}
+    - {fileID: 4243380313371510213, guid: 5e6e4365edbba694fbd44db775474b15, type: 3}
+    - {fileID: 256915029944668310, guid: bc40618d860e16747a691538bdfeee66, type: 3}
+    - {fileID: 6985166005208549746, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
+    Phases:
+    - PhaseMesh: {fileID: 667981447760509138, guid: 3c1f9fefb30f931479dd75bb8d132d75, type: 3}
+      Duration: 5
+      Drop:
+      - {fileID: 7873659017899006821, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
+    - PhaseMesh: {fileID: 5063018358746981122, guid: 5bf97128f18072f409a167a4bd846c9d, type: 3}
+      Duration: 4
+      Drop:
+      - {fileID: 7873659017899006821, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
+    - PhaseMesh: {fileID: 519680175607803557, guid: 9e3c7b3f7a607c54d9e63de7bc2beaf9, type: 3}
+      Duration: 0
+      Drop: []
