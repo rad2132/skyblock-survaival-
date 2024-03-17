@@ -10,8 +10,8 @@ public class DirtHandler : MonoBehaviour
     private ItemHandler grassPrefab;
     private void Awake()
     {
-        CheckGrassNearby();
-        
+        StartCoroutine(CheckGrassNearby());
+        enabled = true;
     }
 
     private IEnumerator CheckGrassNearby()
@@ -19,13 +19,13 @@ public class DirtHandler : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Calldown);
-            Vector3 boxSize = new Vector3(2f, 0.1f, 2f);
-            List<Collider> colliders = Physics.OverlapBox(transform.position, boxSize, Quaternion.identity, gameObject.layer).ToList();
-
+            Vector3 boxSize = new Vector3(.6f, .1f, .6f);
+            List<Collider> colliders = Physics.OverlapBox(transform.position, boxSize, transform.rotation).ToList();
+            
             foreach (Collider collider in colliders)
             {
                 ItemHandler itemHandler = collider.GetComponent<ItemHandler>();
-                if (itemHandler != null)
+                if (itemHandler != null && itemHandler.gameObject.layer == gameObject.layer)
                 {
                     if (itemHandler.itemID == grassPrefab.itemID)
                     {

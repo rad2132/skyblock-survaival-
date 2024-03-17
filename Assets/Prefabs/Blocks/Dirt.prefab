@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674596944b197564ea0911e9b9c2864b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Calldown: 0.1
+  Calldown: 30
   grassPrefab: {fileID: 6985166005208549746, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
 --- !u!1001 &2766712964250587757
 PrefabInstance:

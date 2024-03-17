@@ -7960,6 +7960,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1624078955181467933, guid: bc40618d860e16747a691538bdfeee66, type: 3}
+      propertyPath: Calldown
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9732,10 +9736,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2208584821308041542, guid: 068f731836577d34d84c43b2a45a2db1, type: 3}
-      propertyPath: IsTree
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2645544979733009081, guid: 068f731836577d34d84c43b2a45a2db1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.26
@@ -9784,10 +9784,6 @@ PrefabInstance:
       propertyPath: DropOnAwake
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8394622866929935063, guid: 068f731836577d34d84c43b2a45a2db1, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0a21be6d06db2c54d951c609764531e1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11381,6 +11377,10 @@ PrefabInstance:
     - target: {fileID: 1994553454022704, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
       propertyPath: m_Name
       value: Grass_block (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1994553454022704, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4152949440472330, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14415,6 +14415,10 @@ PrefabInstance:
     - target: {fileID: 4290808857442492, guid: bc40618d860e16747a691538bdfeee66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1624078955181467933, guid: bc40618d860e16747a691538bdfeee66, type: 3}
+      propertyPath: Calldown
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17568,6 +17572,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4290808857442492, guid: bc40618d860e16747a691538bdfeee66, type: 3}
   m_PrefabInstance: {fileID: 930490755}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1728322049
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1274708771134849983, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: itemID
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274708771134849983, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: DropOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8371442888965491388, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_Name
+      value: IronHoe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6948886
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.4400303
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436866192671818027, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f172ee33c42907b4d92f39bb4f2eab23, type: 3}
 --- !u!1 &1730538133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5471024719508202528, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
@@ -23083,6 +23152,10 @@ MonoBehaviour:
   Plants:
     serializedVersion: 2
     m_Bits: 2048
+  FarmableBlocks:
+  - {fileID: 6985166005208549746, guid: 34a031333f407ff46aa2be10d4990402, type: 3}
+  - {fileID: 256915029944668310, guid: bc40618d860e16747a691538bdfeee66, type: 3}
+  FarmLandPrefab: {fileID: 4243380313371510213, guid: 5e6e4365edbba694fbd44db775474b15, type: 3}
   MaxInteractionDistance: 5
   UnarmedDamage: 3
   HandAnimator: {fileID: 1985363568}
@@ -23276,10 +23349,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2208584821308041542, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
-      propertyPath: _plantMesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2645544979733009081, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.31
@@ -23323,10 +23392,6 @@ PrefabInstance:
     - target: {fileID: 6744230365626596263, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
       propertyPath: m_Name
       value: milit seeds
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744230365626596263, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7873659017899006821, guid: 1fd3843d975685e45a54aa03d864ccae, type: 3}
       propertyPath: DropOnAwake
@@ -24396,3 +24461,4 @@ SceneRoots:
   - {fileID: 791788222}
   - {fileID: 2319312660444270253}
   - {fileID: 976060015}
+  - {fileID: 1728322049}

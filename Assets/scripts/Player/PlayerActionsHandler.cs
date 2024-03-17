@@ -7,6 +7,8 @@ public class PlayerActionsHandler : MonoBehaviour
     public LayerMask Obstacles;
     public LayerMask Liquids;
     public LayerMask Plants;
+    public List<ItemHandler> FarmableBlocks = new List<ItemHandler>();
+    public ItemHandler FarmLandPrefab;
     public float MaxInteractionDistance;
     public int UnarmedDamage = 3;
     public Animator HandAnimator;
@@ -208,40 +210,46 @@ public class PlayerActionsHandler : MonoBehaviour
                 return;
             }
 
-            if(selectedItem.ItemType == ItemType.Plant)
+            if (selectedItem.ItemType == ItemType.Plant)
             {
-                PlantHandler plantHandler =selectedItem.ItemPrefab.GetComponent<PlantHandler>();
-                if(plantHandler != null && plantHandler.IsPlantable(blockInFront))
+                PlantHandler plantHandler = selectedItem.ItemPrefab.GetComponent<PlantHandler>();
+                if (plantHandler != null && plantHandler.IsPlantable(blockInFront))
                 {
 
                     Ray ray = new Ray(blockInFront.transform.position, Vector3.up);
                     if (!Physics.Raycast(ray, 0.5f, Obstacles))
                     {
 
-                        PlantHandler newPlant = Instantiate(plantHandler,blockInFront.transform.position + Vector3.up,Quaternion.identity);
+                        PlantHandler newPlant = Instantiate(plantHandler, blockInFront.transform.position + Vector3.up, Quaternion.identity);
                         newPlant.Plant();
                         PlayerInventory.SelectedSlot.GetHandlingItem().OnCountChange(-1);
                     }
                 }
                 return;
             }
+            if(GetSelectedItem().ToolType == ToolType.Hoe)
+            {
+                CreateFarmland();
+                return;
+            }
+            try
+            {
+                CollectLiquid(GetSelectedItem().ItemPrefab.GetComponent<Bucket>());
+            }
+            catch { }
         }
-        try
-        {
-            CollectLiquid(GetSelectedItem().ItemPrefab.GetComponent<Bucket>());
-        }
-        catch { }
+        
     }
 
     private void CollectPlant()
     {
         Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
         RaycastHit hit;
-        if(Physics.Raycast(ray,out hit, MaxInteractionDistance, Plants))
+        if (Physics.Raycast(ray, out hit, MaxInteractionDistance, Plants))
         {
             Debug.Log(hit.collider.name);
             PlantHandler plant = hit.collider.GetComponent<PlantHandler>();
-            if(plant != null)
+            if (plant != null)
             {
                 plant.DestroyPlant();
             }
@@ -250,7 +258,7 @@ public class PlayerActionsHandler : MonoBehaviour
 
     private void CollectLiquid(Bucket bucket)
     {
-        if(bucket == null) return;
+        if (bucket == null) return;
 
         if (bucket.ContainingLiquid == ContainingLiquid.Empty)
         {
@@ -261,13 +269,13 @@ public class PlayerActionsHandler : MonoBehaviour
                 sourceInFront.OnLiquidDestroy();
             }
         }
-        else if(GetBlockInfront()!= null)
+        else if (GetBlockInfront() != null)
         {
-            Spawn(bucket.handlingLiquid.gameObject); 
+            Spawn(bucket.handlingLiquid.gameObject);
             PlayerInventory.SelectedSlot.GetHandlingItem().SetItem(bucket.EmptyBucketID);
         }
 
-        
+
     }
 
     private void Hit()
@@ -369,6 +377,24 @@ public class PlayerActionsHandler : MonoBehaviour
         }
     }
 
+    private void CreateFarmland()
+    {
+        ItemHandler blockInFront = GetBlockInfront();
+        bool isFarmable = false;
+        foreach (ItemHandler block in FarmableBlocks)
+        {
+            if (block.itemID == blockInFront.itemID)
+            {
+                isFarmable = true;
+                break;
+            }
+        }
+        if (!isFarmable) return;
+
+        Instantiate(FarmLandPrefab, blockInFront.transform.position, Quaternion.identity);
+        Destroy(blockInFront.gameObject);
+    }
+
     private void Remove(GameObject objectToRemove)
     {
         Item Object = _itemsManager.items[objectToRemove.GetComponent<ItemHandler>().itemID];
@@ -407,10 +433,10 @@ public class PlayerActionsHandler : MonoBehaviour
                     liquidBlock.OnStreamChange();
                 }
             }
-            if(Physics.Raycast(blockPos,Vector3.up, out hit, .5f, Plants))
+            if (Physics.Raycast(blockPos, Vector3.up, out hit, .5f, Plants))
             {
                 PlantHandler plant = hit.collider.GetComponent<PlantHandler>();
-                if(plant != null)
+                if (plant != null)
                 {
                     plant.DestroyPlant();
                 }
@@ -431,7 +457,7 @@ public class PlayerActionsHandler : MonoBehaviour
 
         if (Mathf.Abs(transform.position.x - hit.point.x) >= .7f ||
             Mathf.Abs(transform.position.y - hit.point.y) >= 1.06f ||
-            Mathf.Abs(transform.position.z - hit.point.z) >= .7f || objectToSpawn.GetComponent<LiquidSource>()!= null)
+            Mathf.Abs(transform.position.z - hit.point.z) >= .7f || objectToSpawn.GetComponent<LiquidSource>() != null)
         {
 
             GameObject newCube;
