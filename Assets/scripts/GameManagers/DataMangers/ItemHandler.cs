@@ -12,21 +12,17 @@ public class ItemHandler : MonoBehaviour
     protected virtual void Awake()
     {
         enabled = false;
-        if (DropOnAwake)
-        {
-            OnDrop();
-        }
+        if (DropOnAwake) OnDrop();
         else triggerBox.enabled = false;
 
     }
-    protected virtual void FixedUpdate()
-    {
-        transform.Rotate(0f, RotateSpeed, 0f);
-    }
+    protected virtual void FixedUpdate() => transform.Rotate(0f, RotateSpeed, 0f);
 
     public virtual void OnDrop()
     {
         try { GetComponentInChildren<BlockBreakingVisualiser>().OnBreakingStop(); } catch { }
+        if (TryGetComponent(out ParticleSystem particleSystem)) particleSystem.Play();
+
         enabled = true;
         isAlive = false;
         triggerBox.enabled = true;
@@ -39,7 +35,7 @@ public class ItemHandler : MonoBehaviour
 
     protected virtual void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag != "Player" || isAlive || !enabled) return;
+        if (!other.gameObject.CompareTag("Player") || isAlive || !enabled) return;
 
         Inventory playerInventory = Inventory.Instance;
         Item referenceItem = ItemsDataHandler.Instance.Data.items[itemID];

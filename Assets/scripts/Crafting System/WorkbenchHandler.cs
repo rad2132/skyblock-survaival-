@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WorkbenchHandler : MonoBehaviour,IInteractable
+public class  WorkbenchHandler : MonoBehaviour,IInteractable
 {
     public void OnInteract()
     {

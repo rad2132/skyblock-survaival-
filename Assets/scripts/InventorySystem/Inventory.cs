@@ -35,11 +35,8 @@ public class Inventory : MonoBehaviour
         
     }
 
-    
-
     public bool AddItem(Item item)
     {
-
         if (item.ItemType == ItemType.Tool || item.StackSize == 1)
         {
             foreach (InventorySlot slot in QuickAccessPanel)

@@ -23,13 +23,14 @@ public class Item
 
     [Header("for blocks only")]
     public float Strength;
-    public List<string> MinesBy;//оружия из которых может выпасть этот блок
+    public List<string> MinesBy;//РѕСЂСѓР¶РёСЏ РёР· РєРѕС‚РѕСЂС‹С… РјРѕР¶РµС‚ РІС‹РїР°СЃС‚СЊ СЌС‚РѕС‚ Р±Р»РѕРє
     public List<float> DamageScale = new(5) { 1, 1, 1, 1, 1 };//[0]-axe, [1]-pickaxe, [2]-shovel, [3]-hoe, [4]-sword, [5]-hand
 
     [Header("for tools only")]
     public ToolMaterial ToolMaterial;
     public ToolType ToolType;
     public int Damage = 3;
+    public int Health = 50;
 
     [Header("for food only")]
     public int Satiety;

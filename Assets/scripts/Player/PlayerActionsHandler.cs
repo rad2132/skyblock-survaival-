@@ -7,7 +7,7 @@ public class PlayerActionsHandler : MonoBehaviour
     public LayerMask Obstacles;
     public LayerMask Liquids;
     public LayerMask Plants;
-    public List<ItemHandler> FarmableBlocks = new List<ItemHandler>();
+    public List<ItemHandler> FarmableBlocks = new();
     public ItemHandler FarmLandPrefab;
     public float MaxInteractionDistance;
     public int UnarmedDamage = 3;
@@ -15,19 +15,19 @@ public class PlayerActionsHandler : MonoBehaviour
     private bool isTouching = false;
     private float touchTime = 0f;
 
-    private bool isEating = false;
-    private bool isMining = false;
-    private bool isHoldingLMB = false;
-    private bool isHoldingRMB = false;
-    private float holdLMBTime = 0f;
-    private float holdRMBTime = 0f;
+    private bool isEating;
+    private bool isMining;
+    private bool isHoldingLMB;
+    private bool isHoldingRMB;
+    private float holdLMBTime;
+    private float holdRMBTime;
 
     private ItemHandler miningBLock;
     private float MiningBlockStrength;
     private float MiningDamage;
 
     private float EatCooldown = 2;
-    private Vector2 fromScreenCenter => new Vector2(Screen.width / 2, Screen.height / 2);
+    private Vector2 fromScreenCenter => new(Screen.width / 2, Screen.height / 2);
 
     private Inventory PlayerInventory;
 
@@ -274,8 +274,6 @@ public class PlayerActionsHandler : MonoBehaviour
             Spawn(bucket.handlingLiquid.gameObject);
             PlayerInventory.SelectedSlot.GetHandlingItem().SetItem(bucket.EmptyBucketID);
         }
-
-
     }
 
     private void Hit()
@@ -291,13 +289,7 @@ public class PlayerActionsHandler : MonoBehaviour
                 {
                     Item selectedItem = GetSelectedItem();
                     Health targetHealth = hit.collider.GetComponent<Health>();
-                    int damage;
-                    if (selectedItem.ItemType == ItemType.Tool)
-                    {
-                        damage = selectedItem.Damage;
-                    }
-                    else damage = UnarmedDamage;
-                    targetHealth.ChangeHealthValue(-damage);
+                    targetHealth.ChangeHealthValue(-(selectedItem.ItemType == ItemType.Tool ? selectedItem.Damage : UnarmedDamage));
                 }
                 catch { Debug.Log("cant hit it"); }
             }
@@ -327,7 +319,6 @@ public class PlayerActionsHandler : MonoBehaviour
 
     private void Mine()
     {
-
         ItemHandler blockInfront = GetBlockInfront();
 
         if (blockInfront == null)
@@ -337,24 +328,20 @@ public class PlayerActionsHandler : MonoBehaviour
         }
 
         HandAnimator.SetBool("IsMining", true);
+        Item selectedItem = GetSelectedItem();
+        
         if (blockInfront != miningBLock || blockInfront == null)
         {
             try { miningBLock.GetComponentInChildren<BlockBreakingVisualiser>().OnBreakingStop(); } catch { }
 
             miningBLock = blockInfront;
 
-
-
             Item miningBlockData = ItemsDataHandler.Instance.Data.items[miningBLock.itemID];
 
-            Item selectedItem = GetSelectedItem();
             MiningBlockStrength = miningBlockData.Strength;
 
-            if (selectedItem.ItemType == ItemType.Tool)
-            {
-                MiningDamage = miningBlockData.DamageScale[WeaponsToID[selectedItem.ToolType]] * MatreialToDamage[selectedItem.ToolMaterial];
-            }
-            else MiningDamage = 1;
+            MiningDamage = selectedItem.ItemType == ItemType.Tool
+                ? miningBlockData.DamageScale[WeaponsToID[selectedItem.ToolType]] * MatreialToDamage[selectedItem.ToolMaterial] : 1;
             try
             {
                 BlockBreakingVisualiser breakingVisualiser = miningBLock.GetComponentInChildren<BlockBreakingVisualiser>();
@@ -365,7 +352,7 @@ public class PlayerActionsHandler : MonoBehaviour
         }
         else
         {
-            MiningBlockStrength -= (MiningDamage * Time.deltaTime);
+            MiningBlockStrength -= MiningDamage * Time.deltaTime;
             if (MiningBlockStrength <= 0)
             {
                 try
@@ -373,6 +360,13 @@ public class PlayerActionsHandler : MonoBehaviour
                     Remove(miningBLock.gameObject);
                 }
                 catch { }
+
+                selectedItem.Health--;
+                if (selectedItem.Health == 0)
+                {
+                    //TODO: партиклы
+                    PlayerInventory.SelectedSlot.GetHandlingItem().ResetItem();
+                }
             }
         }
     }
@@ -450,10 +444,7 @@ public class PlayerActionsHandler : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(fromScreenCenter);
         RaycastHit hit;
 
-        if (!Physics.Raycast(ray, out hit, MaxInteractionDistance, Obstacles))
-        {
-            return;
-        }
+        if (!Physics.Raycast(ray, out hit, MaxInteractionDistance, Obstacles)) return;
 
         if (Mathf.Abs(transform.position.x - hit.point.x) >= .7f ||
             Mathf.Abs(transform.position.y - hit.point.y) >= 1.06f ||
