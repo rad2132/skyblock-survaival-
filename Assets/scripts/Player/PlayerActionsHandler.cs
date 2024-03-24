@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class PlayerActionsHandler : MonoBehaviour
 {
@@ -314,7 +315,6 @@ public class PlayerActionsHandler : MonoBehaviour
             EatCooldown = 2f;
         }
         return true;
-
     }
 
     private void Mine()
@@ -364,7 +364,7 @@ public class PlayerActionsHandler : MonoBehaviour
                 selectedItem.Health--;
                 if (selectedItem.Health == 0)
                 {
-                    //TODO: партиклы
+                    Inventory.Instance.DestroyParticle.Play();
                     PlayerInventory.SelectedSlot.GetHandlingItem().ResetItem();
                 }
             }
@@ -374,16 +374,7 @@ public class PlayerActionsHandler : MonoBehaviour
     private void CreateFarmland()
     {
         ItemHandler blockInFront = GetBlockInfront();
-        bool isFarmable = false;
-        foreach (ItemHandler block in FarmableBlocks)
-        {
-            if (block.itemID == blockInFront.itemID)
-            {
-                isFarmable = true;
-                break;
-            }
-        }
-        if (!isFarmable) return;
+        if (FarmableBlocks.All(block => block.itemID != blockInFront.itemID)) return;
 
         Instantiate(FarmLandPrefab, blockInFront.transform.position, Quaternion.identity);
         Destroy(blockInFront.gameObject);

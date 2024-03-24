@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public List<InventorySlot> QuickAccessPanel;
     public List<InventorySlot> GeneralInventory;
     public InventorySlot SelectedSlot;
+    [field: SerializeField] public ParticleSystem DestroyParticle { get; private set; }
 
     private void Awake()
     {
@@ -23,16 +24,7 @@ public class Inventory : MonoBehaviour
     {
         SelectedSlot = QuickAccessPanel[slotNumber - 1];
         int id = SelectedSlot.GetHandlingItem().GetItemData().ID;
-        if (id == -1)
-        {
-            AddITemInHand(null);
-        }
-        else
-        {
-            AddITemInHand(ItemsDataHandler.Instance.Data.items[id].ItemPrefab);
-        }
-
-        
+        AddITemInHand(id == -1 ? null : ItemsDataHandler.Instance.Data.items[id].ItemPrefab);
     }
 
     public bool AddItem(Item item)
@@ -61,20 +53,9 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-
-
-        List<InventorySlot> slots = new List<InventorySlot>();
-
-
-        foreach (InventorySlot slot in QuickAccessPanel)
-        {
-            slots.Add(slot);
-        }
-
-        foreach (InventorySlot slot in GeneralInventory)
-        {
-            slots.Add(slot);
-        }
+        
+        List<InventorySlot> slots = new List<InventorySlot>(QuickAccessPanel);
+        slots.AddRange(GeneralInventory);
 
         foreach (InventorySlot slot in slots)
         {
@@ -100,7 +81,8 @@ public class Inventory : MonoBehaviour
     }
 
     public void AddITemInHand(ItemHandler itemPrefab)
-    {  if(Hand.childCount == 1)
+    {  
+        if(Hand.childCount == 1)
         {
             Destroy(Hand.GetChild(0).gameObject);
         }

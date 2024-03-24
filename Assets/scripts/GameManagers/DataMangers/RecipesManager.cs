@@ -10,53 +10,52 @@ public class RecipesManager : ScriptableObject
         int middleLeftID, int middleCenterID, int middleRightID,
         int lowerLeftID, int lowerCenterID, int lowerRightID, ref int resultCount, ref Item resultReference)
     {
-        
         foreach (Recipe recipe in Recipes)
         {
             resultCount = recipe.ResultCount;
             resultReference = itemsManager.items[recipe.Result.itemID];
             if (recipe.SingleItemRequiered)
             {
-                if (upperLeftID == recipe.UpperLeft() && upperLeftID != -1 )
+                if (upperLeftID == recipe.UpperLeftItemId() && upperLeftID != -1 )
                 {
                     return true;
                 }
 
-                if (upperCenterID == recipe.UpperCenter() && upperCenterID != -1)
+                if (upperCenterID == recipe.UpperCenterItemId() && upperCenterID != -1)
                 {
                    return true;
                 }
 
-                if (upperRightID == recipe.UpperRight() && upperRightID != -1)
+                if (upperRightID == recipe.UpperRightItemId() && upperRightID != -1)
                 {
                    return true;
                 }
     
-                if (middleLeftID == recipe.MiddleLeft() && middleLeftID != -1 )
+                if (middleLeftID == recipe.MiddleLeftItemId() && middleLeftID != -1 )
                 {
                     return true;
                 }
-                if (middleCenterID == recipe.MiddleCenter() && middleCenterID != -1)
+                if (middleCenterID == recipe.MiddleCenterItemId() && middleCenterID != -1)
                 {
                    return true;
                 }
                
-                if (middleRightID == recipe.MiddleRight() && middleRightID != -1)
+                if (middleRightID == recipe.MiddleRightItemId() && middleRightID != -1)
                 {
                     return true;
                 }
                
-                if (lowerLeftID == recipe.LowerLeft() && lowerLeftID != -1 )
+                if (lowerLeftID == recipe.LowerLeftItemId() && lowerLeftID != -1 )
                 {
                     return true;
                 }
 
-                if (lowerCenterID == recipe.LowerCenter() && lowerCenterID != -1)
+                if (lowerCenterID == recipe.LowerCenterItemId() && lowerCenterID != -1)
                 {
                     return true;
                 }
 
-                if (lowerRightID == recipe.LowerRight() && lowerRightID != -1)
+                if (lowerRightID == recipe.LowerRightItemId() && lowerRightID != -1)
                 {
                    
                     return true;
@@ -65,30 +64,30 @@ public class RecipesManager : ScriptableObject
             }
             else
 
-            if(upperLeftID == recipe.UpperLeft())
+            if(upperLeftID == recipe.UpperLeftItemId())
             {
 
-                if(upperCenterID == recipe.UpperCenter())
+                if(upperCenterID == recipe.UpperCenterItemId())
                 {
 
-                    if(upperRightID == recipe.UpperRight())
+                    if(upperRightID == recipe.UpperRightItemId())
                     {
 
-                        if(middleLeftID == recipe.MiddleLeft())
+                        if(middleLeftID == recipe.MiddleLeftItemId())
                         {
 
-                            if(middleCenterID == recipe.MiddleCenter())
+                            if(middleCenterID == recipe.MiddleCenterItemId())
                             {
 
-                                if(middleRightID == recipe.MiddleRight())
+                                if(middleRightID == recipe.MiddleRightItemId())
                                 {
 
-                                    if(lowerLeftID == recipe.LowerLeft())
+                                    if(lowerLeftID == recipe.LowerLeftItemId())
                                     {
 
-                                        if(lowerCenterID == recipe.LowerCenter())
+                                        if(lowerCenterID == recipe.LowerCenterItemId())
                                         {
-                                            if(lowerRightID == recipe.LowerRight())
+                                            if(lowerRightID == recipe.LowerRightItemId())
                                             {
                                                 resultReference = itemsManager.items[recipe.Result.itemID];
                                                 return true;
@@ -103,102 +102,5 @@ public class RecipesManager : ScriptableObject
             }
         }
         return false;
-    }
-}
-
-[System.Serializable]
-public class Recipe
-{
-    public ItemHandler _upperLeft;
-    public ItemHandler _upperCenter;
-    public ItemHandler _uperRight;
-
-    public ItemHandler _middleLeft;
-    public ItemHandler _middleCenter;
-    public ItemHandler _middleRight;
-
-    public ItemHandler _lowerLeft;
-    public ItemHandler _lowerCenter;
-    public ItemHandler _lowerRight;
-
-    public ItemHandler Result;
-    public int ResultCount;
-    public bool SingleItemRequiered;
-    public int UpperLeft()
-    {
-        if (_upperLeft != null)
-        {
-            return _upperLeft.itemID;
-        }
-        return -1;
-    }
-    public int UpperCenter()
-    {
-        if (_upperCenter != null)
-        {
-            return _upperCenter.itemID;
-        }
-        return -1;
-    }
-
-    public int UpperRight()
-    {
-        if (_uperRight != null)
-        {
-            return _uperRight.itemID;
-        }
-        return -1;
-    }
-
-    public int MiddleLeft()
-    {
-        if (_middleLeft != null)
-        {
-            return _middleLeft.itemID;
-        }
-        return -1;
-    }
-    public int MiddleCenter()
-    {
-        if (_middleCenter != null)
-        {
-            return _middleCenter.itemID;
-        }
-        return -1;
-    }
-
-    public int MiddleRight()
-    {
-        if (_middleRight != null)
-        {
-            return _middleRight.itemID;
-        }
-        return -1;
-    }
-
-    public int LowerLeft()
-    {
-        if (_lowerLeft != null)
-        {
-            return _lowerLeft.itemID;
-        }
-        return -1;
-    }
-    public int LowerCenter()
-    {
-        if (_lowerCenter != null)
-        {
-            return _lowerCenter.itemID;
-        }
-        return -1;
-    }
-
-    public int LowerRight()
-    {
-        if (_lowerRight != null)
-        {
-            return _lowerRight.itemID;
-        }
-        return -1;
     }
 }
