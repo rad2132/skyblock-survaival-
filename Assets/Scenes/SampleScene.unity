@@ -15969,83 +15969,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8214272250969311114, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
   m_PrefabInstance: {fileID: 1504912141}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1175519293
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1175519295}
-  - component: {fileID: 1175519294}
-  - component: {fileID: 1175519296}
-  m_Layer: 0
-  m_Name: NavMeshSurface
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1175519294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175519293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 1
-  m_NavMeshData: {fileID: 23800000, guid: 6f526f3e0228aac42beeffcbc6b51b8f, type: 2}
-  m_BuildHeightMesh: 0
---- !u!4 &1175519295
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175519293}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4, y: 0, z: 2.67}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1175519296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1175519293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3349ccbbcd0dbab448550d0a634b9735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NavMeshSurface: {fileID: 1175519294}
 --- !u!1001 &1178439045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24657,6 +24580,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: af55ecd5-e950-417b-9920-ff87f1ff8ff8
     m_ActionName: Inventory/OpenInventory[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 018956a3-32b2-4e02-bad0-3539d679aadf
+    m_ActionName: Player/Sprint[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3a91a88a-3968-402e-ab77-f6b54a7bd427
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d084ce3e-af22-40f7-a119-5e799dc058f8
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9e5b3df5-92e5-4bad-a459-b6739acd8503
+    m_ActionName: Player/Bend[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Inventory
@@ -25952,32 +25891,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc40618d860e16747a691538bdfeee66, type: 3}
---- !u!114 &1958451954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6817638360474014853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 994313dd90dc5e440b39239b8cb4a37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 6817638360666096965}
-  Head: {fileID: 6817638360666096965}
-  Obstacles:
-    serializedVersion: 2
-    m_Bits: 8
-  standingHeight: 1.7
-  bendingHeight: 1
-  cameraSensitivityMobile: 300
-  cameraSensitivityPC: 3
-  moveInputDeadZone: 100
-  bendMoveSpeed: 1
-  standingMoveSpeed: 3
-  gravityValue: -0.5
-  JumpHeight: 0.03
 --- !u!1001 &1963054958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28835,9 +28748,7 @@ GameObject:
   - component: {fileID: 430106261948626363}
   - component: {fileID: 3152554757074525534}
   - component: {fileID: 6817638360474014860}
-  - component: {fileID: 1958451954}
-  - component: {fileID: 6817638360474014856}
-  - component: {fileID: 6817638360474014855}
+  - component: {fileID: 6817638360474014864}
   - component: {fileID: 6817638360474014857}
   - component: {fileID: 6817638360474014858}
   - component: {fileID: 6817638360474014861}
@@ -28868,180 +28779,6 @@ Transform:
   - {fileID: 1525086430}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6817638360474014855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6817638360474014853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a580e4bc086614bbe3698a10254624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6817638360474014856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6817638360474014853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: b755f3cdc9fbe4f4f824c52bdcfddd11, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6817638360474014855}
-        m_TargetAssemblyTypeName: InputReader, Assembly-CSharp
-        m_MethodName: OnMovementTriggered
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b06493a6-7d41-4c23-ab81-9cd38f1a905e
-    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6817638360474014855}
-        m_TargetAssemblyTypeName: InputReader, Assembly-CSharp
-        m_MethodName: OnLookingTriggered
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7bef35bd-ae29-4cb9-96b8-5ce4ef58942e
-    m_ActionName: Player/Looking[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6817638360474014855}
-        m_TargetAssemblyTypeName: InputReader, Assembly-CSharp
-        m_MethodName: OnJumpTriggered
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3fe34896-e727-47f5-8e6e-8e05914d4ecf
-    m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ccd85a85-31c2-41bf-8fe3-deb14f1bc4b9
-    m_ActionName: Inventory/SelectSlot1[/Keyboard/1]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 67649664-ad02-4255-ab65-e54c620aebdc
-    m_ActionName: Inventory/SelectSlot2[/Keyboard/2]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 525a8560-ed56-4d64-9c87-0e95425d1dfb
-    m_ActionName: Inventory/SelectSlot3[/Keyboard/3]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e8444bfa-c5a7-472e-a0b2-0d9a4967ac8e
-    m_ActionName: Inventory/SelectSlot4[/Keyboard/4]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 31825529-b4b9-48e8-9fc2-b57681c47164
-    m_ActionName: Inventory/SelectSlot5[/Keyboard/5]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: abf93fdc-2389-491a-a3fd-0c681524b7ed
-    m_ActionName: Inventory/SelectSlot6[/Keyboard/6]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3c8b85c2-dd94-4bdc-8b12-91b7c2348bc4
-    m_ActionName: Inventory/SelectSlot7[/Keyboard/7]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7503675c-fbd1-42e7-8e98-5bb9b12326f8
-    m_ActionName: Inventory/SelectSlot8[/Keyboard/8]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 48c05754-88f4-4e52-9656-b392184390c3
-    m_ActionName: Inventory/SelectSlot9[/Keyboard/9]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 430106261948626363}
-        m_TargetAssemblyTypeName: SpawnRemove, Assembly-CSharp
-        m_MethodName: OnPointerDrag
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: fefa6f38-6cf5-413c-b055-94d086f9602b
-    m_ActionName: Player/Touch[/Device Simulator Touchscreen/primaryTouch]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: af55ecd5-e950-417b-9920-ff87f1ff8ff8
-    m_ActionName: Inventory/SwitchInventoryVisibility[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6817638360474014855}
-        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
-        m_MethodName: OnBendTriggered
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 9e5b3df5-92e5-4bad-a459-b6739acd8503
-    m_ActionName: Player/Bend[/Keyboard/shift]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 018956a3-32b2-4e02-bad0-3539d679aadf
-    m_ActionName: Player/Sprint[/Keyboard/shift]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3a91a88a-3968-402e-ab77-f6b54a7bd427
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d084ce3e-af22-40f7-a119-5e799dc058f8
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &6817638360474014857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29174,6 +28911,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f699fd385359d62418b6faea3113fb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6817638360474014864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817638360474014853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d854c7eb9a4189b7d5d90eddf7efa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _walkSpeed: 3
+  _runSpeed: 5
+  _rotateSpeed: 10
+  _jumpForce: 4.5
+  _gravity: -9.81
 --- !u!1 &6817638360666096962
 GameObject:
   m_ObjectHideFlags: 0
@@ -29648,7 +29402,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 322427832}
-  - {fileID: 1175519295}
   - {fileID: 1279524564}
   - {fileID: 1884464090}
   - {fileID: 278725959}
