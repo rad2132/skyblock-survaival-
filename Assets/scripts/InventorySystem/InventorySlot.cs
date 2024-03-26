@@ -40,8 +40,5 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public virtual void OnItemChanged(InventoryItem item)
     {
     }
-    public virtual InventoryItem GetHandlingItem()
-    {
-        return transform.GetComponentInChildren<InventoryItem>();
-    }
+    public virtual InventoryItem GetHandlingItem() => transform.GetComponentInChildren<InventoryItem>();
 }

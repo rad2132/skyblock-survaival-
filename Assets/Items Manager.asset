@@ -32,6 +32,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: dirt
@@ -52,6 +53,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Grass
@@ -72,6 +74,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: hay
@@ -92,6 +95,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: iron
@@ -113,6 +117,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: leaves
@@ -133,6 +138,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: 'brick_stone '
@@ -154,6 +160,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: whiteWool
@@ -174,6 +181,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Qak
@@ -194,6 +202,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: wood_qak
@@ -214,6 +223,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: dry_farm
@@ -234,6 +244,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: wet_farm
@@ -254,6 +265,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Rock
@@ -275,6 +287,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Wood_oak
@@ -295,6 +308,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: steep_oak
@@ -315,6 +329,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: intake
@@ -335,6 +350,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: door
@@ -355,6 +371,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: haif
@@ -376,6 +393,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: step_cabblestone
@@ -397,6 +415,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: graver
@@ -417,6 +436,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: crafting
@@ -437,6 +457,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: furnace
@@ -458,6 +479,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: chest
@@ -479,6 +501,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 0
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Wood_Axe
@@ -493,6 +516,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 0
     Damage: 3
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Stone_Axe
@@ -507,6 +531,7 @@ MonoBehaviour:
     ToolMaterial: 1
     ToolType: 0
     Damage: 5
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Iron_Axe
@@ -521,6 +546,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 0
     Damage: 5
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Wood_Hoe
@@ -535,6 +561,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 2
     Damage: 1
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Stone_Hoe
@@ -549,6 +576,7 @@ MonoBehaviour:
     ToolMaterial: 1
     ToolType: 2
     Damage: 2
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Iron_Hoe
@@ -563,6 +591,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 2
     Damage: 3
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Wood_Pickaxe
@@ -577,6 +606,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 3
     Damage: 2
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Stone_Pickaxe
@@ -591,6 +621,7 @@ MonoBehaviour:
     ToolMaterial: 1
     ToolType: 3
     Damage: 3
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Iron_Pickaxe
@@ -605,6 +636,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 3
     Damage: 4
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Wood_Shovel
@@ -619,6 +651,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 4
     Damage: 1
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Stone_Shovel
@@ -633,6 +666,7 @@ MonoBehaviour:
     ToolMaterial: 1
     ToolType: 4
     Damage: 2
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Iron_Shovel
@@ -647,6 +681,7 @@ MonoBehaviour:
     ToolMaterial: 1
     ToolType: 4
     Damage: 3
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Wood_Sword
@@ -661,6 +696,7 @@ MonoBehaviour:
     ToolMaterial: 0
     ToolType: 1
     Damage: 4
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Stone_Sword
@@ -675,6 +711,7 @@ MonoBehaviour:
     ToolMaterial: 1
     ToolType: 1
     Damage: 5
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Iron_Sword
@@ -689,6 +726,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 1
     Damage: 6
+    Health: 50
     Satiety: 0
     SaturationTime: 0
   - name: Human's Flesh
@@ -703,6 +741,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 1
     Damage: 6
+    Health: 50
     Satiety: 10
     SaturationTime: 40
   - name: Empty Bucket
@@ -717,6 +756,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 1
     Damage: 6
+    Health: 50
     Satiety: 10
     SaturationTime: 40
   - name: Bucket Of Water
@@ -731,6 +771,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 1
     Damage: 6
+    Health: 50
     Satiety: 10
     SaturationTime: 40
   - name: Bucket Of Lava
@@ -745,6 +786,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 1
     Damage: 6
+    Health: 50
     Satiety: 10
     SaturationTime: 40
   - name: Milit Seeds
@@ -759,6 +801,7 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 1
     Damage: 6
+    Health: 50
     Satiety: 10
     SaturationTime: 40
   - name: Oak Seeds
@@ -773,5 +816,6 @@ MonoBehaviour:
     ToolMaterial: 2
     ToolType: 1
     Damage: 6
+    Health: 50
     Satiety: 10
     SaturationTime: 40

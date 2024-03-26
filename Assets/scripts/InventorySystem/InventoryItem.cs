@@ -23,6 +23,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     [SerializeField]
     private Text _itemsCounter;
     private InventorySlot _parentSlot;
+    private int _health;
 
     private void Start()
     {
@@ -60,6 +61,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         _handlingItem = new ItemData(item.ID, 1);
         _slotIcon.sprite = item.Icon;
         _itemsCounter.text = string.Empty;
+        _health = item.Health;
 
         if (Inventory.Instance.SelectedSlot == _parentSlot)
         {
@@ -96,6 +98,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         _itemsCounter.text = string.Empty;
     }
 
+    public void ClearItem()
+    {
+        ItemData data = GetItemData();
+        if (data.ID == -1) return;
+        
+        ResetItem();
+        for (int i = 0; i < data.Count; i++) Inventory.Instance.AddItem(ItemsDataHandler.Instance.Data.items[data.ID]);
+    }
+
     public virtual ItemData GetItemData()
     {
         if (_handlingItem != null)
@@ -105,6 +116,14 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
         ItemData dataResult = new ItemData(-1, 1);
         return dataResult;
+    }
 
+    public void Damage()
+    {
+        _health--;
+        if (_health != 0) return;
+        
+        Inventory.Instance.DestroyParticle.Play();
+        ResetItem();
     }
 }
