@@ -33,7 +33,7 @@ namespace PlayerMovement
             _characterController = GetComponent<CharacterController>();
             _playerCamera = GetComponentInChildren<Camera>();
             
-            _outputCamera = new NativeArray<Vector2>( 2, Allocator.Persistent); 
+            _outputCamera = new NativeArray<Vector2>(2, Allocator.Persistent); 
             _outputVelocity = new NativeArray<Vector3>(2, Allocator.Persistent);
             
             Cursor.lockState = CursorLockMode.Locked;
