@@ -30,7 +30,7 @@ public class Item
     public ToolMaterial ToolMaterial;
     public ToolType ToolType;
     public int Damage = 3;
-    public int Health = 50;
+    public int Health;
 
     [Header("for food only")]
     public int Satiety;

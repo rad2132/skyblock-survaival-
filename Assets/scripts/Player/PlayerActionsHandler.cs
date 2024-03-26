@@ -361,12 +361,7 @@ public class PlayerActionsHandler : MonoBehaviour
                 }
                 catch { }
 
-                selectedItem.Health--;
-                if (selectedItem.Health == 0)
-                {
-                    Inventory.Instance.DestroyParticle.Play();
-                    PlayerInventory.SelectedSlot.GetHandlingItem().ResetItem();
-                }
+                PlayerInventory.SelectedSlot.GetHandlingItem().Damage();
             }
         }
     }
