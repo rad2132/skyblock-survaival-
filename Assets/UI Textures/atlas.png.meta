@@ -1039,7 +1039,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_43
+      name: Slot
       rect:
         serializedVersion: 2
         x: 62
@@ -1081,7 +1081,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: atlas_45
+      name: ActiveSlot
       rect:
         serializedVersion: 2
         x: 194
@@ -1385,6 +1385,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ActiveSlot: -1513739160
+      Slot: -2060042304
       atlas_0: -1852428821
       atlas_1: 723474966
       atlas_10: 1453212358
@@ -1423,9 +1425,7 @@ TextureImporter:
       atlas_40: -1936519816
       atlas_41: -1081888713
       atlas_42: 1733982460
-      atlas_43: -2060042304
       atlas_44: 1277122499
-      atlas_45: -1513739160
       atlas_46: -1762543520
       atlas_47: -1665484828
       atlas_48: -1933436207
