@@ -330,7 +330,7 @@ public class PlayerActionsHandler : MonoBehaviour
         HandAnimator.SetBool("IsMining", true);
         Item selectedItem = GetSelectedItem();
         
-        if (blockInfront != miningBLock || blockInfront == null)
+        if (blockInfront != miningBLock)
         {
             try { miningBLock.GetComponentInChildren<BlockBreakingVisualiser>().OnBreakingStop(); } catch { }
 

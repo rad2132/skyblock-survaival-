@@ -18,6 +18,7 @@ namespace PlayerMovement
         private InputActions _inputSystem;
         private CharacterController _characterController;
         private Camera _playerCamera;
+        private AudioSource _audio;
 
         private Vector3 _velocity;
         private Vector2 _rotation;
@@ -32,6 +33,7 @@ namespace PlayerMovement
 
             _characterController = GetComponent<CharacterController>();
             _playerCamera = GetComponentInChildren<Camera>();
+            _audio = GetComponent<AudioSource>();
             
             _outputCamera = new NativeArray<Vector2>(2, Allocator.Persistent); 
             _outputVelocity = new NativeArray<Vector3>(2, Allocator.Persistent);
@@ -72,6 +74,9 @@ namespace PlayerMovement
             
             _playerCamera.transform.localEulerAngles = _rotation;
             _characterController.Move(_velocity * Time.deltaTime);
+
+            if (_velocity is { x: 0, z: 0 }) _audio.Stop();
+            else _audio.Play();
         }
 
         private void FixedUpdate()

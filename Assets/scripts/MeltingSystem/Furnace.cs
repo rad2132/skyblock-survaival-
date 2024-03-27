@@ -6,23 +6,26 @@ public class Furnace : MonoBehaviour, IInteractable
     public InventorySlot FuelSlot;
     public RemeltingResultSlot ResultSlot;
     public RemeltingManager RemeltingManager;
+
+    private AudioSource _audio;
     private RemeltingRecipe _handlingRecipe;
-    private bool _isWorking = false;
-    private ItemData _fuel = null;
-    private ItemData _rawMaterial = null;
-    private ItemData _result = null;
+    private bool _isWorking;
+    private ItemData _fuel;
+    private ItemData _rawMaterial;
+    private ItemData _result;
     private float _workingTime;
-    private float _meltingTime = 0;
+    private float _meltingTime;
+
+    private void Start() => _audio = GetComponent<AudioSource>();
+
     private void FixedUpdate()
     {
         _workingTime -= Time.deltaTime;
         _isWorking = _workingTime > 0;
-        if (_meltingTime > 0 && _isWorking)
-        {
-            _meltingTime -= Time.deltaTime;
-        }
+        if (_meltingTime > 0 && _isWorking) _meltingTime -= Time.deltaTime;
         Use();
     }
+    
     private void Use()
     {
         try
@@ -85,10 +88,12 @@ public class Furnace : MonoBehaviour, IInteractable
         catch { }
        
     }
+    
     private void Melt()
     {
         if (_meltingTime <= 0)
         {
+            _audio.Play();
             if (ResultSlot.GetHandlingItem().GetItemData().ID == -1)
             {
                 ResultSlot.GetHandlingItem().SetItem(_handlingRecipe.Result.itemID);
@@ -105,11 +110,12 @@ public class Furnace : MonoBehaviour, IInteractable
                 _meltingTime = _handlingRecipe.MeltingTime;
             }
         }
-        else Debug.Log("melting");
+        else
+        {
+            _audio.Stop();
+            Debug.Log("melting");
+        }
     }
 
-    public void OnInteract()
-    {
-        FurnaceUI.Instance.OnUIActivate(this, _fuel, _rawMaterial, _result);
-    }
+    public void OnInteract() => FurnaceUI.Instance.OnUIActivate(this, _fuel, _rawMaterial, _result);
 }

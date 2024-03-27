@@ -4,25 +4,18 @@ using UnityEngine;
 
 public class ChestHandler : MonoBehaviour, IInteractable
 {
-    private List<ItemData> _items = new List<ItemData>();
+    private List<ItemData> _items = new();
     [SerializeField] private Animator _animator;
-    private void Awake()
-    {
-     StartCoroutine(OnAwake());   
-    }
+    
+    private void Awake() => StartCoroutine(OnAwake());
+
     private IEnumerator OnAwake()
     {
         yield return new WaitForEndOfFrame();
 
-        for (int i = 0; i < ChestUI.Instance.Slots.Count; i++)
-        {
-            _items.Add(new ItemData(-1, 1));
-        }
+        for (int i = 0; i < ChestUI.Instance.Slots.Count; i++) _items.Add(new ItemData(-1, 1));
     }
-    public void OnInteract()
-    {
-       StartCoroutine(OpenChest());
-    }
+    public void OnInteract() => StartCoroutine(OpenChest());
 
     private IEnumerator OpenChest()
     {
