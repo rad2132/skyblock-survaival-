@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Furnace : MonoBehaviour, IInteractable
 {
-    public InventorySlot RawMaterialSlot;
-    public InventorySlot FuelSlot;
-    public RemeltingResultSlot ResultSlot;
     public RemeltingManager RemeltingManager;
 
     private AudioSource _audio;
@@ -31,15 +28,15 @@ public class Furnace : MonoBehaviour, IInteractable
         try
         {
             ItemHandler fuelItem = null;
-            if (FuelSlot.GetHandlingItem().GetItemData().ID != -1)
+            if (FurnaceUI.Instance.FuelSlot.GetHandlingItem().GetItemData().ID != -1)
             {
-                fuelItem = ItemsDataHandler.Instance.Data.items[FuelSlot.GetHandlingItem().GetItemData().ID].ItemPrefab;
+                fuelItem = ItemsDataHandler.Instance.Data.items[FurnaceUI.Instance.FuelSlot.GetHandlingItem().GetItemData().ID].ItemPrefab;
             }
 
             ItemHandler RawMaterialItem = null;
-            if (RawMaterialSlot.GetHandlingItem().GetItemData().ID != -1)
+            if (FurnaceUI.Instance.RawMaterialSlot.GetHandlingItem().GetItemData().ID != -1)
             {
-                RawMaterialItem = ItemsDataHandler.Instance.Data.items[RawMaterialSlot.GetHandlingItem().GetItemData().ID].ItemPrefab;
+                RawMaterialItem = ItemsDataHandler.Instance.Data.items[FurnaceUI.Instance.RawMaterialSlot.GetHandlingItem().GetItemData().ID].ItemPrefab;
             }
 
             Fuel fuel = RemeltingManager.GetFuel(fuelItem);
@@ -48,12 +45,12 @@ public class Furnace : MonoBehaviour, IInteractable
                 _handlingRecipe = RemeltingManager.GetRecipe(RawMaterialItem);
                 if (_handlingRecipe != null)
                 {
-                    if (ResultSlot.GetHandlingItem().GetItemData().ID == -1 || ResultSlot.GetHandlingItem().GetItemData().ID == _handlingRecipe.Result.itemID)
+                    if (FurnaceUI.Instance.ResultSlot.GetHandlingItem().GetItemData().ID == -1 || FurnaceUI.Instance.ResultSlot.GetHandlingItem().GetItemData().ID == _handlingRecipe.Result.itemID)
                     {
                         if (fuel != null && _workingTime < 0.5f)
                         {
                             _workingTime = fuel.BurningTime;
-                            FuelSlot.GetHandlingItem().OnCountChange(-1);
+                            FurnaceUI.Instance.FuelSlot.GetHandlingItem().OnCountChange(-1);
                         }
                         if (_isWorking)
                         {
@@ -67,19 +64,19 @@ public class Furnace : MonoBehaviour, IInteractable
             if (FurnaceUI.Instance.HandlingFurnace != this) return;
             try
             {
-                if (_rawMaterial != RawMaterialSlot.GetHandlingItem().GetItemData())
+                if (_rawMaterial != FurnaceUI.Instance.RawMaterialSlot.GetHandlingItem().GetItemData())
                 {
-                    _rawMaterial = RawMaterialSlot.GetHandlingItem().GetItemData();
+                    _rawMaterial = FurnaceUI.Instance.RawMaterialSlot.GetHandlingItem().GetItemData();
                 }
 
-                if (_result != ResultSlot.GetHandlingItem().GetItemData())
+                if (_result != FurnaceUI.Instance.ResultSlot.GetHandlingItem().GetItemData())
                 {
-                    _result = ResultSlot.GetHandlingItem().GetItemData();
+                    _result = FurnaceUI.Instance.ResultSlot.GetHandlingItem().GetItemData();
                 }
 
-                if (_fuel != FuelSlot.GetHandlingItem().GetItemData())
+                if (_fuel != FurnaceUI.Instance.FuelSlot.GetHandlingItem().GetItemData())
                 {
-                    _fuel = FuelSlot.GetHandlingItem().GetItemData();
+                    _fuel = FurnaceUI.Instance.FuelSlot.GetHandlingItem().GetItemData();
                 }
             }
             catch { }
@@ -94,19 +91,19 @@ public class Furnace : MonoBehaviour, IInteractable
         if (_meltingTime <= 0)
         {
             _audio.Play();
-            if (ResultSlot.GetHandlingItem().GetItemData().ID == -1)
+            if (FurnaceUI.Instance.ResultSlot.GetHandlingItem().GetItemData().ID == -1)
             {
-                ResultSlot.GetHandlingItem().SetItem(_handlingRecipe.Result.itemID);
+                FurnaceUI.Instance.ResultSlot.GetHandlingItem().SetItem(_handlingRecipe.Result.itemID);
             }
             else
             {
-                ResultSlot.GetHandlingItem().OnCountChange(1);
+                FurnaceUI.Instance.ResultSlot.GetHandlingItem().OnCountChange(1);
             }
 
-            ItemData rawMaterial = RawMaterialSlot.GetHandlingItem().GetItemData();
+            ItemData rawMaterial = FurnaceUI.Instance.RawMaterialSlot.GetHandlingItem().GetItemData();
             if (rawMaterial.ID != -1)
             {
-                RawMaterialSlot.GetHandlingItem().OnCountChange(-1);
+                FurnaceUI.Instance.RawMaterialSlot.GetHandlingItem().OnCountChange(-1);
                 _meltingTime = _handlingRecipe.MeltingTime;
             }
         }

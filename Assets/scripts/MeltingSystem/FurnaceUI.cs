@@ -8,11 +8,9 @@ public class FurnaceUI : MonoBehaviour
     public InventorySlot RawMaterialSlot;
     public InventorySlot ResultSlot;
 
-    public Furnace HandlingFurnace {  get; private set; } = null;
-    private void Awake()
-    {
-        Instance = this;
-    }
+    public Furnace HandlingFurnace {  get; private set; }
+    
+    private void Awake() => Instance = this;
 
     public void OnUIActivate(Furnace furnace, ItemData fuel,ItemData rawMaterial,ItemData result)
     {

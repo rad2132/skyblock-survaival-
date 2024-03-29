@@ -11,7 +11,7 @@ public class UI_Inventory : MonoBehaviour
     [SerializeField] private GameObject _chestUI;
     [SerializeField] private GameObject _furnaceUI;
     
-    [SerializeField] private List<GameObject> QuickAcessButtons = new();
+    [SerializeField] private GameObject QuickAcessButtons;
     [SerializeField] private AudioSource _chestAudio;
     public bool IsOpen { get; private set; }
     
@@ -45,8 +45,8 @@ public class UI_Inventory : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        foreach (GameObject item in QuickAcessButtons) item.SetActive(!IsOpen);
-        _inventoryGameObject.SetActive(IsOpen);
+        QuickAcessButtons.SetActive(!IsOpen);
+        _inventoryGameObject.SetActive(IsOpen && !openChest);
     }
 
     private void SelectSlot(int slotNumber) => Inventory.Instance.SelectSlot(slotNumber);

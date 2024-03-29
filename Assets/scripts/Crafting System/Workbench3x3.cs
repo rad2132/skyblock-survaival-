@@ -14,6 +14,5 @@ public class Workbench3x3 : MonoBehaviour
     public WorkbenchSlot LowerCenter;
     public WorkbenchSlot LowerRight;
 
-    public GameObject WorkbenchUI;
     public WorkbenchResultSlot ResultSlot;
 }

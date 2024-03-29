@@ -6,20 +6,16 @@ public class Workbench : MonoBehaviour
     [SerializeField] private Workbench2x2 _workbench2x2;
     [SerializeField] private Workbench3x3 _workbench3x3;
     public static Workbench Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
-    public void TryCraft()
-    {
-        StartCoroutine(OnCraftTry());
-    }
+    
+    private void Awake() => Instance = this;
+
+    public void TryCraft() => StartCoroutine(OnCraftTry());
 
     private IEnumerator OnCraftTry()
     {
         yield return new WaitForEndOfFrame();
         Debug.Log("try craft");
-        if (_workbench2x2.WorkbenchUI.activeSelf)
+        if (_workbench2x2.gameObject.activeSelf)
         {
             Debug.Log("2x2 is active");
             Item resultRefence = new Item();
@@ -38,7 +34,7 @@ public class Workbench : MonoBehaviour
                 Debug.Log("wtf");
             }
         }
-        else if (_workbench3x3.WorkbenchUI.activeSelf)
+        else if (_workbench3x3.gameObject.activeSelf)
         {
             Debug.Log("3x3 is active");
             Item resultRefence = new Item();

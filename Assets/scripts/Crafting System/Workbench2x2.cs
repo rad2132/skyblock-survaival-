@@ -8,6 +8,5 @@ public class Workbench2x2 : MonoBehaviour
     public WorkbenchSlot LowerLeft;
     public WorkbenchSlot LowerRight;
 
-    public GameObject WorkbenchUI;
     public WorkbenchResultSlot ResultSlot;
 }
