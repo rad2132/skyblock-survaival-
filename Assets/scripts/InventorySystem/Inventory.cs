@@ -31,50 +31,32 @@ public class Inventory : MonoBehaviour
     {
         if (item.ItemType == ItemType.Tool || item.StackSize == 1)
         {
-            foreach (InventorySlot slot in QuickAccessPanel)
+            foreach (var invItem in QuickAccessPanel.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData().ID == -1))
             {
-                InventoryItem invItem = slot.GetHandlingItem();
-
-                if (invItem.GetItemData().ID == -1)
-                {
-                    invItem.SetItem(item.ID);
-                    return true;
-                }
+                invItem.SetItem(item.ID);
+                return true;
             }
 
-            foreach (InventorySlot slot in GeneralInventory)
+            foreach (var invItem in GeneralInventory.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData().ID == -1))
             {
-                InventoryItem invItem = slot.GetHandlingItem();
-
-                if (invItem.GetItemData().ID == -1)
-                {
-                    invItem.SetItem(item.ID);
-                    return true;
-                }
+                invItem.SetItem(item.ID);
+                return true;
             }
         }
         
         List<InventorySlot> slots = new List<InventorySlot>(QuickAccessPanel);
         slots.AddRange(GeneralInventory);
 
-        foreach (InventorySlot slot in slots)
+        foreach (var invItem in slots.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData() != null && invItem.GetItemData().ID == item.ID && invItem.GetItemData().Count < item.StackSize))
         {
-            InventoryItem invItem = slot.GetHandlingItem();
-            if (invItem.GetItemData() != null && invItem.GetItemData().ID == item.ID && invItem.GetItemData().Count < item.StackSize)
-            {
-                invItem.OnCountChange(1);
-                return true;
-            }
+            invItem.OnCountChange(1);
+            return true;
         }
 
-        foreach (InventorySlot slot in slots)
+        foreach (var invItem in slots.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData().ID == -1))
         {
-            InventoryItem invItem = slot.GetHandlingItem();
-            if (invItem.GetItemData().ID == -1)
-            {
-                invItem.SetItem(item.ID);
-                return true;
-            }
+            invItem.SetItem(item.ID);
+            return true;
         }
 
         return false;
