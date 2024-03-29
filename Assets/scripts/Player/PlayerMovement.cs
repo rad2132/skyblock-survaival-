@@ -9,6 +9,7 @@ namespace PlayerMovement
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour
     {
+        [SerializeField] private float _couchSpeed = 1;
         [SerializeField] private float _walkSpeed = 5;
         [SerializeField] private float _runSpeed = 8;
         [SerializeField] private float _rotateSpeed = 10;
@@ -29,6 +30,8 @@ namespace PlayerMovement
         {
             _inputSystem = Player.Instance.InputActions;
             _inputSystem.Player.Jump.performed += Jump;
+            _inputSystem.Player.Bend.performed += Bend;
+            _inputSystem.Player.Bend.canceled += Stand;
             _inputSystem.Player.Enable();
 
             _characterController = GetComponent<CharacterController>();
@@ -58,11 +61,13 @@ namespace PlayerMovement
             VelocityCalculation velocityCalculation = new VelocityCalculation
             {
                 Velocity = _outputVelocity,
+                CouchSpeed = _couchSpeed,
                 WalkSpeed = _walkSpeed,
                 RunSpeed = _runSpeed,
                 CameraAnglesY = _playerCamera.transform.localEulerAngles.y,
                 Direction = _inputSystem.Player.Move.ReadValue<Vector2>(),
-                IsSprint = _inputSystem.Player.Sprint.IsPressed()
+                IsSprint = _inputSystem.Player.Sprint.IsPressed(),
+                IsCouch = _inputSystem.Player.Bend.IsPressed()
             };
 
             jobs[0] = cameraRotateCalculation.Schedule();
@@ -87,9 +92,15 @@ namespace PlayerMovement
 
         private void Jump(InputAction.CallbackContext _) { if (_characterController.isGrounded) _velocity.y = _jumpForce; }
 
+        private void Stand(InputAction.CallbackContext _) => _characterController.height = 1.8f;
+
+        private void Bend(InputAction.CallbackContext _) => _characterController.height = 1.4f;
+
         private void OnDestroy()
         {
             _inputSystem.Player.Jump.performed -= Jump;
+            _inputSystem.Player.Bend.performed -= Bend;
+            _inputSystem.Player.Bend.canceled -= Stand;
             _inputSystem.Player.Disable();
             
             _outputCamera.Dispose();
@@ -119,17 +130,19 @@ namespace PlayerMovement
         [BurstCompile]
         private struct VelocityCalculation : IJob
         {
+            [ReadOnly] public float CouchSpeed;
             [ReadOnly] public float WalkSpeed;
             [ReadOnly] public float RunSpeed;
             [ReadOnly] public float CameraAnglesY;
             [ReadOnly] public bool IsSprint;
+            [ReadOnly] public bool IsCouch;
             [ReadOnly] public Vector2 Direction;
             public NativeArray<Vector3> Velocity;
     
             public void Execute()
             {
                 Vector3 velocity = Velocity[0];
-                Direction *= IsSprint ? RunSpeed : WalkSpeed;
+                Direction *= IsCouch ? CouchSpeed : IsSprint ? RunSpeed : WalkSpeed;
                 Vector3 move = Quaternion.Euler(0, CameraAnglesY, 0) * new Vector3(Direction.x, 0, Direction.y);
                 velocity = new Vector3(move.x, velocity.y, move.z);
                 Velocity[1] = velocity;
