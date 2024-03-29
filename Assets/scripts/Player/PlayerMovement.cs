@@ -27,7 +27,7 @@ namespace PlayerMovement
 
         private void Start()
         {
-            _inputSystem = new InputActions();
+            _inputSystem = Player.Instance.InputActions;
             _inputSystem.Player.Jump.performed += Jump;
             _inputSystem.Player.Enable();
 
