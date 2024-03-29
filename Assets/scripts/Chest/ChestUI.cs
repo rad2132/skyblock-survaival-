@@ -6,8 +6,9 @@ public class ChestUI : MonoBehaviour
 {
     public static ChestUI Instance;
 
-    public List<InventorySlot> Slots = new List<InventorySlot>();
-    public ChestHandler HandlingChest { get; private set; } = null;
+    public List<InventorySlot> Slots = new();
+    public ChestHandler HandlingChest { get; private set; }
+    
     private void Awake()
     {
         Instance = this;

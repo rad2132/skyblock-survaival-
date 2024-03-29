@@ -76,7 +76,7 @@ namespace PlayerMovement
             _characterController.Move(_velocity * Time.deltaTime);
 
             if (_velocity is { x: 0, z: 0 }) _audio.Stop();
-            else _audio.Play();
+            else if (!_audio.isPlaying) _audio.Play();
         }
 
         private void FixedUpdate()

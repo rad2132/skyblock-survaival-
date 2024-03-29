@@ -15,13 +15,10 @@ public class ItemData
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [HideInInspector]
-    public Transform OriginalParent;
+    [HideInInspector] public Transform OriginalParent;
+    [SerializeField] private Image _slotIcon;
+    [SerializeField] private Text _itemsCounter;
     private ItemData _handlingItem;
-    [SerializeField]
-    private Image _slotIcon;
-    [SerializeField]
-    private Text _itemsCounter;
     private InventorySlot _parentSlot;
     private int _health;
 
@@ -60,6 +57,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         Item item = ItemsDataHandler.Instance.Data.items[itemID];
         _handlingItem = new ItemData(item.ID, 1);
         _slotIcon.sprite = item.Icon;
+        _slotIcon.color = Color.white;
         _itemsCounter.text = string.Empty;
         _health = item.Health;
 
@@ -95,6 +93,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         }
         _handlingItem = null;
         _slotIcon.sprite = null;
+        _slotIcon.color = Color.clear;
         _itemsCounter.text = string.Empty;
     }
 

@@ -11,8 +11,8 @@ public class BlockBreakingVisualiser : MonoBehaviour
     
     private void Awake()
     {
-        TryGetComponent(out _particleSystem);
-        TryGetComponent(out _audio);
+        transform.parent.TryGetComponent(out _particleSystem);
+        transform.parent.TryGetComponent(out _audio);
         
         animators = GetComponentsInChildren<Animator>().ToList();
         foreach (Animator animator in animators)

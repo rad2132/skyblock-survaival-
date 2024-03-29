@@ -15,15 +15,11 @@ public class ChestHandler : MonoBehaviour, IInteractable
 
         for (int i = 0; i < ChestUI.Instance.Slots.Count; i++) _items.Add(new ItemData(-1, 1));
     }
-    public void OnInteract() => StartCoroutine(OpenChest());
-
-    private IEnumerator OpenChest()
+    public void OnInteract()
     {
-        _animator.SetBool("Open", true);
         ChestUI.Instance.OnChestOpen(_items, this);
         PlayerDataHandler.Instance.PlayerInventoryUI.SwitchUIVisibility(false, false, true,false);
-        yield return new WaitForEndOfFrame();
-        _animator.SetBool("Open", false);
+        _animator.SetTrigger("Open");
     }
 
     public void OnItemChange(int slotNumber,ItemData newItemData)

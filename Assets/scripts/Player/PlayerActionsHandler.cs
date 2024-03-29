@@ -195,9 +195,9 @@ public class PlayerActionsHandler : MonoBehaviour
         Item selectedItem = GetSelectedItem();
         if (blockInFront != null)
         {
-            if (blockInFront.GetComponent<IInteractable>() != null)
+            if (blockInFront.TryGetComponent(out IInteractable interactable))
             {
-                blockInFront.GetComponent<IInteractable>().OnInteract();
+                interactable.OnInteract();
                 return;
             }
 

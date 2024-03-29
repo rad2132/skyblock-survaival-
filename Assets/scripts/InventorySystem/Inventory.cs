@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
     public Transform Hand;
     public List<InventorySlot> QuickAccessPanel;
     public List<InventorySlot> GeneralInventory;
-    public InventorySlot SelectedSlot;
+    public InventorySlot SelectedSlot { get; private set; }
     [field: SerializeField] public ParticleSystem DestroyParticle { get; private set; }
 
     private void Awake()
