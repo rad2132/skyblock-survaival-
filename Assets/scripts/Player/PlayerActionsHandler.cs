@@ -193,53 +193,53 @@ public class PlayerActionsHandler : MonoBehaviour
     {
         ItemHandler blockInFront = GetBlockInfront();
         Item selectedItem = GetSelectedItem();
-        if (blockInFront != null)
+        if (blockInFront == null) return;
+        
+        if (!Player.Instance.InputActions.Player.Bend.IsPressed() && blockInFront.TryGetComponent(out IInteractable interactable))
         {
-            if (blockInFront.TryGetComponent(out IInteractable interactable))
-            {
-                interactable.OnInteract();
-                return;
-            }
+            interactable.OnInteract();
+            return;
+        }
 
-            if (selectedItem.ID != -1 && selectedItem.ItemType == ItemType.Block)
-            {
-                try
-                {
-                    Spawn(selectedItem.ItemPrefab.gameObject);
-                }
-                catch { }
-                return;
-            }
-
-            if (selectedItem.ItemType == ItemType.Plant)
-            {
-                PlantHandler plantHandler = selectedItem.ItemPrefab.GetComponent<PlantHandler>();
-                if (plantHandler != null && plantHandler.IsPlantable(blockInFront))
-                {
-
-                    Ray ray = new Ray(blockInFront.transform.position, Vector3.up);
-                    if (!Physics.Raycast(ray, 0.5f, Obstacles))
-                    {
-
-                        PlantHandler newPlant = Instantiate(plantHandler, blockInFront.transform.position + Vector3.up, Quaternion.identity);
-                        newPlant.Plant();
-                        PlayerInventory.SelectedSlot.GetHandlingItem().OnCountChange(-1);
-                    }
-                }
-                return;
-            }
-            if(GetSelectedItem().ToolType == ToolType.Hoe)
-            {
-                CreateFarmland();
-                return;
-            }
+        if (selectedItem.ID != -1 && selectedItem.ItemType == ItemType.Block)
+        {
             try
             {
-                CollectLiquid(GetSelectedItem().ItemPrefab.GetComponent<Bucket>());
+                Spawn(selectedItem.ItemPrefab.gameObject);
             }
             catch { }
+            return;
+        }
+
+        if (selectedItem.ItemType == ItemType.Plant)
+        {
+            PlantHandler plantHandler = selectedItem.ItemPrefab.GetComponent<PlantHandler>();
+            if (plantHandler != null && plantHandler.IsPlantable(blockInFront))
+            {
+
+                Ray ray = new Ray(blockInFront.transform.position, Vector3.up);
+                if (!Physics.Raycast(ray, 0.5f, Obstacles))
+                {
+
+                    PlantHandler newPlant = Instantiate(plantHandler, blockInFront.transform.position + Vector3.up, Quaternion.identity);
+                    newPlant.Plant();
+                    PlayerInventory.SelectedSlot.GetHandlingItem().OnCountChange(-1);
+                }
+            }
+            return;
         }
         
+        if(GetSelectedItem().ToolType == ToolType.Hoe)
+        {
+            CreateFarmland();
+            return;
+        }
+        try
+        {
+            CollectLiquid(GetSelectedItem().ItemPrefab.GetComponent<Bucket>());
+        }
+        catch { }
+
     }
 
     private void CollectPlant()
