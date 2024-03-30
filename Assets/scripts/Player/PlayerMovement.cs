@@ -80,7 +80,7 @@ namespace PlayerMovement
             _playerCamera.transform.localEulerAngles = _rotation;
             _characterController.Move(_velocity * Time.deltaTime);
 
-            if (_velocity is { x: 0, z: 0 }) _audio.Stop();
+            if (_velocity is { x: 0, z: 0 } || !_characterController.isGrounded) _audio.Stop();
             else if (!_audio.isPlaying) _audio.Play();
         }
 

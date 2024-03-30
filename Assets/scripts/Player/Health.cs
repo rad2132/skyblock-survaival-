@@ -4,16 +4,20 @@ public class Health : MonoBehaviour
 {
     public int MaxHealth = 20;
     public int CurrentHealth { get; private set; }
+    [SerializeField] private GameObject _deathMenu;
+    
     private CharacterController characterController;
 
     private float _fallSpeed;
     private float _fallStartPoint;
     private bool _staredFalling = true;
+    
     public virtual void Start()
     {
         characterController = GetComponent<CharacterController>();
         CurrentHealth = MaxHealth;
     }
+    
     protected virtual void Update()
     {
         if (transform.position.y < -150)
@@ -47,11 +51,9 @@ public class Health : MonoBehaviour
             _fallSpeed = 0;
             _staredFalling = true;
         }
-
-
     }
 
-    public virtual void ChangeHealthValue(int value)
+    public void ChangeHealthValue(int value)
     {
         CurrentHealth += value;
 
@@ -60,10 +62,23 @@ public class Health : MonoBehaviour
         if (CurrentHealth <= 0) OnCharacterDie();
     }
 
-    public virtual void OnCharacterDie()
+    public void OnCharacterDie()
     {
+        Player.Instance.InputActions.Disable();
+        _deathMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
         Debug.Log(name + " is dead");
-        Player player = GetComponent<Player>();
-        if(player == null) Destroy(gameObject);
+    }
+
+    public void Revival()
+    {
+        _deathMenu.SetActive(false);
+        
+        characterController.enabled = false;
+        transform.position = Vector3.zero;
+        characterController.enabled = true;
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Player.Instance.InputActions.Enable();
     }
 }

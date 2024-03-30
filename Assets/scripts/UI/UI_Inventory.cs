@@ -39,14 +39,12 @@ public class UI_Inventory : MonoBehaviour
         {
             Player.Instance.InputActions.Player.Enable();
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             _craftBook.SetActive(false);
         }
         else
         {
             Player.Instance.InputActions.Player.Disable();
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             if (!openChest) _craftBook.SetActive(true);
         }
         QuickAcessButtons.SetActive(!IsOpen);

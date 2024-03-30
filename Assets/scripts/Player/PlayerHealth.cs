@@ -5,11 +5,11 @@ public class PlayerHealth : Health
     private StarvingSystem _starvingSystem;
     public float IncreaseHealthCooldown = 10f;
     private float _secondsUntilIncrease;
+    
     public override void Start()
     {
         base.Start();
         _starvingSystem = GetComponent<StarvingSystem>();
- 
     }
 
     private void FixedUpdate()
@@ -24,15 +24,5 @@ public class PlayerHealth : Health
             ChangeHealthValue(1);
             _secondsUntilIncrease = IncreaseHealthCooldown;
         }
-    }
-
-    public override void ChangeHealthValue(int value)
-    {
-        base.ChangeHealthValue(value);
-    }
-
-    public override void OnCharacterDie()
-    {
-        base.OnCharacterDie();
     }
 }
