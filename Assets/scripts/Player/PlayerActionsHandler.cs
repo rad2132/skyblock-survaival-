@@ -433,7 +433,7 @@ public class PlayerActionsHandler : MonoBehaviour
         if (!Physics.Raycast(ray, out hit, MaxInteractionDistance, Obstacles)) return;
 
         if (Mathf.Abs(transform.position.x - hit.point.x) >= .7f ||
-            Mathf.Abs(transform.position.y - hit.point.y) >= 1.06f ||
+            Mathf.Abs(transform.position.y - hit.point.y) >= 1.85f ||
             Mathf.Abs(transform.position.z - hit.point.z) >= .7f || objectToSpawn.GetComponent<LiquidSource>() != null)
         {
 
