@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using InventorySystem;
 using UnityEngine;
 
 public class ChestHandler : MonoBehaviour, IInteractable
@@ -17,6 +18,8 @@ public class ChestHandler : MonoBehaviour, IInteractable
     }
     public void OnInteract()
     {
+        EventAggregator.QuickAccessInventoryPanelRendering.Publish();
+        
         ChestUI.Instance.OnChestOpen(_items, this);
         PlayerDataHandler.Instance.PlayerInventoryUI.SwitchUIVisibility(false, false, true,false);
         _animator.SetTrigger("Open");
