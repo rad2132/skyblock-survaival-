@@ -1,3 +1,4 @@
+using InventorySystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,6 @@ public class UI_Inventory : MonoBehaviour
     [SerializeField] private GameObject _craftBook;
     
     [SerializeField] private GameObject QuickAcessButtons;
-    [SerializeField] private AudioSource _chestAudio;
     public bool IsOpen { get; private set; }
     
     private void Start()
@@ -29,7 +29,6 @@ public class UI_Inventory : MonoBehaviour
          {
              case true when !openChest:
              case false when openChest:
-                 _chestAudio.Play();
                  _chestUI.SetActive(openChest);
                  break;
          }
@@ -53,6 +52,8 @@ public class UI_Inventory : MonoBehaviour
     
     public void OnUISwitch(InputAction.CallbackContext context)
     {
+        EventAggregator.QuickAccessInventoryPanelRendering.Publish();
+        
         if (context.performed) SwitchUIVisibility(true, false, false,false);
     }
 

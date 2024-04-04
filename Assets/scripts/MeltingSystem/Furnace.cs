@@ -117,8 +117,8 @@ public class Furnace : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        EventAggregator.QuickAccessInventoryPanelRendering.Publish();
-        
         FurnaceUI.Instance.OnUIActivate(this, _fuel, _rawMaterial, _result);
+        
+        EventAggregator.QuickAccessInventoryPanelRendering.Publish();
     }
 }

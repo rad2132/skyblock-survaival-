@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
     public List<InventorySlot> GeneralInventory;
     public InventorySlot SelectedSlot { get; private set; }
     [field: SerializeField] public ParticleSystem DestroyParticle { get; private set; }
+    [SerializeField] private Transform _itemSpawner;
 
     private void Awake()
     {
@@ -62,6 +63,41 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    public bool RemoveItem(Item item)
+    {
+        if (item.ItemType == ItemType.Tool || item.StackSize == 1)
+        {
+            foreach (var invItem in QuickAccessPanel.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData().ID == item.ID))
+            {
+                invItem.SetItem(-1);
+                return true;
+            }
+
+            foreach (var invItem in GeneralInventory.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData().ID == item.ID))
+            {
+                invItem.SetItem(-1);
+                return true;
+            }
+        }
+        
+        List<InventorySlot> slots = new List<InventorySlot>(QuickAccessPanel);
+        slots.AddRange(GeneralInventory);
+
+        foreach (var invItem in slots.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData() != null && invItem.GetItemData().ID == item.ID && invItem.GetItemData().Count < item.StackSize))
+        {
+            invItem.OnCountChange(-1);
+            return true;
+        }
+
+        foreach (var invItem in slots.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData().ID == item.ID))
+        {
+            invItem.SetItem(-1);
+            return true;
+        }
+
+        return false;
+    }
+    
     public void AddITemInHand(ItemHandler itemPrefab)
     {  
         if(Hand.childCount == 1)
@@ -82,5 +118,16 @@ public class Inventory : MonoBehaviour
             clone.gameObject.layer = Hand.gameObject.layer;
         }
         catch { }
+    }
+
+    public void DropItem(Item item, int count)
+    {
+        RemoveItem(item);
+        
+        for (int i = count; i > 0; i--)
+        {
+            Transform spawnedItem = Instantiate(item.ItemPrefab.transform, _itemSpawner.position, Quaternion.identity);
+            spawnedItem.localScale = Vector3.one * 0.3f;
+        }
     }
 }

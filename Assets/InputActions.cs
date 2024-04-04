@@ -405,6 +405,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""5b65f4e7-1612-4a3c-b393-afc550253471"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -517,6 +526,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchInventoryVisibility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0cedb58e-abfd-4c6b-bd92-5c8009e03586"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -545,6 +565,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Inventory_SelectSlot8 = m_Inventory.FindAction("SelectSlot8", throwIfNotFound: true);
         m_Inventory_SelectSlot9 = m_Inventory.FindAction("SelectSlot9", throwIfNotFound: true);
         m_Inventory_SwitchInventoryVisibility = m_Inventory.FindAction("SwitchInventoryVisibility", throwIfNotFound: true);
+        m_Inventory_DropItem = m_Inventory.FindAction("DropItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -718,6 +739,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Inventory_SelectSlot8;
     private readonly InputAction m_Inventory_SelectSlot9;
     private readonly InputAction m_Inventory_SwitchInventoryVisibility;
+    private readonly InputAction m_Inventory_DropItem;
     public struct InventoryActions
     {
         private @InputActions m_Wrapper;
@@ -732,6 +754,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @SelectSlot8 => m_Wrapper.m_Inventory_SelectSlot8;
         public InputAction @SelectSlot9 => m_Wrapper.m_Inventory_SelectSlot9;
         public InputAction @SwitchInventoryVisibility => m_Wrapper.m_Inventory_SwitchInventoryVisibility;
+        public InputAction @DropItem => m_Wrapper.m_Inventory_DropItem;
         public InputActionMap Get() { return m_Wrapper.m_Inventory; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -771,6 +794,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchInventoryVisibility.started += instance.OnSwitchInventoryVisibility;
             @SwitchInventoryVisibility.performed += instance.OnSwitchInventoryVisibility;
             @SwitchInventoryVisibility.canceled += instance.OnSwitchInventoryVisibility;
+            @DropItem.started += instance.OnDropItem;
+            @DropItem.performed += instance.OnDropItem;
+            @DropItem.canceled += instance.OnDropItem;
         }
 
         private void UnregisterCallbacks(IInventoryActions instance)
@@ -805,6 +831,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchInventoryVisibility.started -= instance.OnSwitchInventoryVisibility;
             @SwitchInventoryVisibility.performed -= instance.OnSwitchInventoryVisibility;
             @SwitchInventoryVisibility.canceled -= instance.OnSwitchInventoryVisibility;
+            @DropItem.started -= instance.OnDropItem;
+            @DropItem.performed -= instance.OnDropItem;
+            @DropItem.canceled -= instance.OnDropItem;
         }
 
         public void RemoveCallbacks(IInventoryActions instance)
@@ -845,5 +874,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnSelectSlot8(InputAction.CallbackContext context);
         void OnSelectSlot9(InputAction.CallbackContext context);
         void OnSwitchInventoryVisibility(InputAction.CallbackContext context);
+        void OnDropItem(InputAction.CallbackContext context);
     }
 }

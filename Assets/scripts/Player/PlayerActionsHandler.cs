@@ -1,6 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using TouchPhase = UnityEngine.TouchPhase;
+
 public class PlayerActionsHandler : MonoBehaviour
 {
     private ItemsDataManager _itemsManager;
@@ -41,6 +45,8 @@ public class PlayerActionsHandler : MonoBehaviour
     {
         _itemsManager = ItemsDataHandler.Instance.Data;
         PlayerInventory = Inventory.Instance;
+        Player.Instance.InputActions.Inventory.DropItem.performed += StartDropCoroutine;
+        Player.Instance.InputActions.Inventory.DropItem.canceled += StopDropCoroutine;
     }
     private void Update()
     {
@@ -55,6 +61,29 @@ public class PlayerActionsHandler : MonoBehaviour
         {
             Eat();
         }
+    }
+
+    private void StartDropCoroutine(InputAction.CallbackContext callbackContext)
+    {
+        StartCoroutine(DropInput());
+    }
+
+    private void StopDropCoroutine(InputAction.CallbackContext callbackContext)
+    {
+        StopCoroutine(DropInput());
+    }
+
+    private IEnumerator DropInput()
+    {
+        Debug.Log("Drop"); 
+            
+        var handlingItemData = Inventory.Instance.SelectedSlot.GetHandlingItem().GetItemData();
+
+        if (handlingItemData.ID == -1) yield break;
+            
+        Inventory.Instance.DropItem(ItemsDataHandler.Instance.Data.items[handlingItemData.ID], handlingItemData.Count);
+        
+        StartCoroutine(DropInput());
     }
 
     private void CheckTouches()

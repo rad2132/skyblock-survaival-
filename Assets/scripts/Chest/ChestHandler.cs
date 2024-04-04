@@ -18,11 +18,11 @@ public class ChestHandler : MonoBehaviour, IInteractable
     }
     public void OnInteract()
     {
-        EventAggregator.QuickAccessInventoryPanelRendering.Publish();
-        
         ChestUI.Instance.OnChestOpen(_items, this);
         PlayerDataHandler.Instance.PlayerInventoryUI.SwitchUIVisibility(false, false, true,false);
         _animator.SetTrigger("Open");
+        
+        EventAggregator.QuickAccessInventoryChestPanelRendering.Publish();
     }
 
     public void OnItemChange(int slotNumber,ItemData newItemData)

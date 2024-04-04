@@ -54,9 +54,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             return;
         }
 
+        print(transform.parent.name);
+        
         Item item = ItemsDataHandler.Instance.Data.items[itemID];
         _handlingItem = new ItemData(item.ID, 1);
         _slotIcon.sprite = item.Icon;
+        print(_slotIcon.sprite);
         _slotIcon.color = Color.white;
         _itemsCounter.text = string.Empty;
         _health = item.Health;
