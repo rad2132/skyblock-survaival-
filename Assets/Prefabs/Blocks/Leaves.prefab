@@ -193,10 +193,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinLifeTime: 30
   MaxLifeTime: 120
-  dropItems:
-  - {fileID: -4290844981082466977, guid: c4f3d3ac155b34a4191f1207719b2b0b, type: 3}
-  - {fileID: -8335180721960064814}
-  - {fileID: 4836553514533484632, guid: 3d3228502d8d021499bddee3a8a9a9d3, type: 3}
+  itemDrops:
+  - <Item>k__BackingField: {fileID: 7873659017899006821, guid: 068f731836577d34d84c43b2a45a2db1, type: 3}
+    <Probability>k__BackingField: 0.45
+  - <Item>k__BackingField: {fileID: 4836553514533484632, guid: b4099ea0148f48b47bcd9a11408d51cd, type: 3}
+    <Probability>k__BackingField: 0.05
 --- !u!82 &-6344808208312716319
 AudioSource:
   m_ObjectHideFlags: 0
