@@ -6,7 +6,7 @@ public class LeafBlockHandler : MonoBehaviour
 {
     public int MinLifeTime = 30;
     public int MaxLifeTime = 120;
-    public List<ItemHandler> dropItems = new List<ItemHandler>();
+    [SerializeField] private List<ItemDrop> itemDrops = new();
     private bool isDropped = false;
 
     private void Awake()
@@ -23,10 +23,31 @@ public class LeafBlockHandler : MonoBehaviour
     private IEnumerator OnTreeBroken()
     {
         int lifetime = Random.Range(MinLifeTime, MaxLifeTime);
-        int dropNumber = Random.Range(0, dropItems.Count);
         yield return new WaitForSeconds(lifetime);
-        ItemHandler drop = Instantiate(dropItems[dropNumber],transform.position,Quaternion.identity);
-        drop.OnDrop();
+
+        ItemHandler itemPrefab = SelectItem();
+        if (itemPrefab != null)
+        {
+            ItemHandler drop = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+            drop.OnDrop();
+        }
         Destroy(gameObject);
+    }
+
+    private ItemHandler SelectItem()
+    {
+        float randomValue = Random.Range(0f, 1f);
+        float currentItemValue = 0f;
+
+        foreach (ItemDrop itemDrop in itemDrops)
+        {
+            currentItemValue += itemDrop.Probability;
+            if (randomValue <= currentItemValue)
+            {
+                return itemDrop.Item;
+            }
+        }
+
+        return null;
     }
 }
