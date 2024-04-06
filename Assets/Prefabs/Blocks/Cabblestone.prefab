@@ -157,7 +157,7 @@ MonoBehaviour:
   DropOnAwake: 0
   itemID: 0
   triggerBox: {fileID: -6781439565627533032}
-  DroppedItemPrefab: {fileID: 0}
+  DroppedItemPrefab: {fileID: 4851307691875228750}
 --- !u!65 &-6781439565627533032
 BoxCollider:
   m_ObjectHideFlags: 0
