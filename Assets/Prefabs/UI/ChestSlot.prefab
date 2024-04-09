@@ -10,31 +10,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3424520448002440592, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424520448002440592, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424520448002440592, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424520448002440592, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424520448002440592, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424520448002440592, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406069162176755056, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406069162176755056, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406069162176755056, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 5471024719508202528, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
       propertyPath: m_Name
-      value: ChestSlot Variant
+      value: ChestSlot
       objectReference: {fileID: 0}
     - target: {fileID: 8214272250969311114, guid: 2115681f58e807348ab1305ccf7dd8b9, type: 3}
       propertyPath: m_Pivot.x
