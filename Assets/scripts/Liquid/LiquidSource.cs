@@ -11,6 +11,8 @@ public class LiquidSource : Liquid
     public List<Liquid> StreamPhases = new List<Liquid>();
     public List<Liquid> handlingBlocks = new List<Liquid>();
     private bool _ableToContinue = true;
+  
+
     private void FixedUpdate()
     {
         if (AboutToDry) return;
@@ -20,7 +22,7 @@ public class LiquidSource : Liquid
     private IEnumerator OnStreamContinue()
     {
         _ableToContinue = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);      
         if (AboutToDry) yield break;
         handlingBlocks[handlingBlocks.Count - 1].ContinueStream();
         _ableToContinue = true;

@@ -18,6 +18,8 @@ public class Liquid : MonoBehaviour
     public bool AboutToDry = false;
     public int BucketOFLiquidID;
     public int NumberInStream = 0;   
+    private MeshRenderer Mesh;
+    private Vector3 ParentScale;
 
     public virtual void ContinueStream()
     {
@@ -46,8 +48,7 @@ public class Liquid : MonoBehaviour
             if (liquid != null && liquid.LiquidType != this.LiquidType)
             {
                 liquid.OnLiquidDestroy();
-                Instantiate(CollisionResult, transform.position + Vector3.back, Quaternion.identity);
-                print("Create_1");
+                Instantiate(CollisionResult, transform.position + Vector3.back, Quaternion.identity);               
                 return false;
             }
             else if (liquid != null && !liquid.AboutToDry)
@@ -60,30 +61,25 @@ public class Liquid : MonoBehaviour
         Liquid newLiqudBlock;
         if (streamDirection == Vector3.down)
         {
-            newLiqudBlock = Instantiate(Source.StreamPhases[0], transform.position + streamDirection, Quaternion.identity);
-            print("Create_down");
+            print(transform.localScale.y);
+            float yPosition = ((1f - transform.localScale.y) / 2f);
+            Vector3 position = new  Vector3(transform.position.x, transform.position.y + yPosition, transform.position.z);
+
+            newLiqudBlock = Instantiate(Source.StreamPhases[0], position + streamDirection, Quaternion.identity);
         }
         else
         {
-            int newBlockNumber = 0;
-            float sizeBlock = 1.000f;
+            int newBlockNumber = 0;           
             Vector3 newBlockPostion = transform.position + streamDirection;
             if (Physics.Raycast(newBlockPostion, Vector3.down, .5f, Obstacles))
             {
                 newBlockNumber = NumberInStream + 1;
-
-                sizeBlock = Mathf.Clamp(0.75f / newBlockNumber * 2f, 0.01f, 0.9f);
-                float yPosition = (1f - sizeBlock) / 2f;
-                newBlockPostion = new Vector3(newBlockPostion.x, transform.position.y - yPosition, newBlockPostion.z);
-                print(yPosition);
-                print(newBlockPostion);
-                
-            }          
-
+            } 
             newLiqudBlock = Instantiate(Source.StreamPhases[newBlockNumber], newBlockPostion, Quaternion.identity);            
+            Mesh = newLiqudBlock.GetComponent<MeshRenderer>();
+            Mesh.enabled = false;
             newLiqudBlock.NumberInStream = newBlockNumber;
-            // StartCoroutine(EditSizeBlock(newLiqudBlock, newBlockNumber));
-            newLiqudBlock.transform.localScale = new Vector3(1f, sizeBlock, 1f);
+            StartCoroutine(EditSizeBlock(newLiqudBlock, newBlockNumber));            
         }
         newLiqudBlock.Source = Source;
         Source.handlingBlocks.Add(newLiqudBlock);
@@ -121,21 +117,21 @@ public class Liquid : MonoBehaviour
     }
 
     private IEnumerator EditSizeBlock(Liquid newLiqudBlock, int newBlockNumber)
-    {
-        yield return new WaitForSeconds(0.1f);
-        if (newBlockNumber != 0)
-        {
-            print(newLiqudBlock.transform.position.y);
-            float sizeBlock = Mathf.Clamp(0.75f / newBlockNumber * 2f, 0.01f, 0.9f);
-            float yPosition = (1f - sizeBlock) / 2f;          
-            Vector3 ofsetPosition = new Vector3(transform.position.x, transform.position.y - yPosition, transform.position.z);
-            newLiqudBlock.transform.localScale = new Vector3(1f, sizeBlock, 1f);
-            newLiqudBlock.transform.position = ofsetPosition;
+    {      
+        yield return new WaitForSeconds(0.01f);
 
-        }
-        else
+        if (newBlockNumber == 0)
         {
-            newLiqudBlock.transform.localScale = new Vector3(1f, 1f, 0.5f);
+            newBlockNumber = Source.handlingBlocks.Count;
         }
+      
+        float sizeBlock = Mathf.Clamp(0.75f / newBlockNumber * 2f, 0.01f, 0.9f);
+        float yPosition = ((1f - sizeBlock) / 2f) - (1f - transform.localScale.y) / 2;
+        Vector3 offsetPosition = new Vector3(newLiqudBlock.transform.position.x, newLiqudBlock.transform.position.y - yPosition, newLiqudBlock.transform.position.z);
+
+        newLiqudBlock.transform.localScale = new Vector3(1f, sizeBlock, 1f);        
+        newLiqudBlock.transform.position = offsetPosition;
+
+        Mesh.enabled = true;
     }
 }
