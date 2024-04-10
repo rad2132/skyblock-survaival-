@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +17,7 @@ public class Liquid : MonoBehaviour
     [HideInInspector]
     public bool AboutToDry = false;
     public int BucketOFLiquidID;
-    public int NumberInStream = 0;
+    public int NumberInStream = 0;   
 
     public virtual void ContinueStream()
     {
@@ -45,6 +47,7 @@ public class Liquid : MonoBehaviour
             {
                 liquid.OnLiquidDestroy();
                 Instantiate(CollisionResult, transform.position + Vector3.back, Quaternion.identity);
+                print("Create_1");
                 return false;
             }
             else if (liquid != null && !liquid.AboutToDry)
@@ -58,17 +61,29 @@ public class Liquid : MonoBehaviour
         if (streamDirection == Vector3.down)
         {
             newLiqudBlock = Instantiate(Source.StreamPhases[0], transform.position + streamDirection, Quaternion.identity);
+            print("Create_down");
         }
         else
         {
             int newBlockNumber = 0;
+            float sizeBlock = 1.000f;
             Vector3 newBlockPostion = transform.position + streamDirection;
             if (Physics.Raycast(newBlockPostion, Vector3.down, .5f, Obstacles))
             {
                 newBlockNumber = NumberInStream + 1;
-            }
-            newLiqudBlock = Instantiate(Source.StreamPhases[newBlockNumber], transform.position + streamDirection, Quaternion.identity);
+
+                sizeBlock = Mathf.Clamp(0.75f / newBlockNumber * 2f, 0.01f, 0.9f);
+                float yPosition = (1f - sizeBlock) / 2f;
+                newBlockPostion = new Vector3(newBlockPostion.x, transform.position.y - yPosition, newBlockPostion.z);
+                print(yPosition);
+                print(newBlockPostion);
+                
+            }          
+
+            newLiqudBlock = Instantiate(Source.StreamPhases[newBlockNumber], newBlockPostion, Quaternion.identity);            
             newLiqudBlock.NumberInStream = newBlockNumber;
+            // StartCoroutine(EditSizeBlock(newLiqudBlock, newBlockNumber));
+            newLiqudBlock.transform.localScale = new Vector3(1f, sizeBlock, 1f);
         }
         newLiqudBlock.Source = Source;
         Source.handlingBlocks.Add(newLiqudBlock);
@@ -103,5 +118,24 @@ public class Liquid : MonoBehaviour
             Source.handlingBlocks.Remove(block);
         }
         LiquidManager.Instance.AbortStream(blocksToDestroy, Source.DryTime);
+    }
+
+    private IEnumerator EditSizeBlock(Liquid newLiqudBlock, int newBlockNumber)
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (newBlockNumber != 0)
+        {
+            print(newLiqudBlock.transform.position.y);
+            float sizeBlock = Mathf.Clamp(0.75f / newBlockNumber * 2f, 0.01f, 0.9f);
+            float yPosition = (1f - sizeBlock) / 2f;          
+            Vector3 ofsetPosition = new Vector3(transform.position.x, transform.position.y - yPosition, transform.position.z);
+            newLiqudBlock.transform.localScale = new Vector3(1f, sizeBlock, 1f);
+            newLiqudBlock.transform.position = ofsetPosition;
+
+        }
+        else
+        {
+            newLiqudBlock.transform.localScale = new Vector3(1f, 1f, 0.5f);
+        }
     }
 }
