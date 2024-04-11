@@ -44,52 +44,66 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         _slotIcon.raycastTarget = true;
         transform.SetParent(OriginalParent);
+       
     }
 
     public virtual void SetItem(int itemID)
     {
+        //print(transform.parent.name);
         if (itemID == -1)
         {
             ResetItem();
             return;
         }
 
-        print(transform.parent.name);
-        
         Item item = ItemsDataHandler.Instance.Data.items[itemID];
         _handlingItem = new ItemData(item.ID, 1);
         _slotIcon.sprite = item.Icon;
-        print(_slotIcon.sprite);
+        //print(_slotIcon.sprite);
         _slotIcon.color = Color.white;
         _itemsCounter.text = string.Empty;
         _health = item.Health;
 
         if (Inventory.Instance.SelectedSlot == _parentSlot)
-        {
+        {            
             Inventory.Instance.AddITemInHand(ItemsDataHandler.Instance.Data.items[GetItemData().ID].ItemPrefab);
-        }
+        }    
+    }
+
+    public void Copu(InventoryItem inventoryItem)
+    {
+        _handlingItem = inventoryItem._handlingItem;
+        _slotIcon.sprite = inventoryItem._slotIcon.sprite;     
+        _slotIcon.color = inventoryItem._slotIcon.color;
+        _itemsCounter.text = inventoryItem._itemsCounter.text;
+        _health = inventoryItem._health;
     }
 
     public virtual void OnCountChange(int count)
     {
-        if (_handlingItem == null) return;
+
+        if (_handlingItem == null) 
+        {  
+            return;
+        }       
         _handlingItem.Count += count;
         if (_handlingItem.Count == 1)
         {
             _itemsCounter.text = string.Empty;
             return;
         }
+        
         if (_handlingItem.Count == 0)
         {
-            ResetItem();
-            
+            ResetItem();         
             return;
         }
-
+       
         _itemsCounter.text = _handlingItem.Count.ToString();
     }
+    [ContextMenu("ResetItem")]
     public virtual void ResetItem()
-    {
+    {        
         if (Inventory.Instance.SelectedSlot == _parentSlot)
         {
             Inventory.Instance.AddITemInHand(null);
@@ -97,7 +111,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         _handlingItem = null;
         _slotIcon.sprite = null;
         _slotIcon.color = Color.clear;
-        _itemsCounter.text = string.Empty;
+        _itemsCounter.text = string.Empty;     
     }
 
     public void ClearItem()

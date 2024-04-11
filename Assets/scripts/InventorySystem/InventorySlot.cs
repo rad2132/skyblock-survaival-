@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    public int SlotNumber;
+    public int SlotNumber;   
     public virtual void OnDrop(PointerEventData eventData)
     {
         try
@@ -23,8 +23,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                     int newItemID = newItem.GetItemData().ID;
                     int newItemCount = newItem.GetItemData().Count - 1;
                     int coreItemID = coreItem.GetItemData().ID;
-                    int coreItemCount = coreItem.GetItemData().Count - 1;
-
+                    int coreItemCount = coreItem.GetItemData().Count - 1;                   
                     coreItem.SetItem(newItemID);
                     coreItem.OnCountChange(newItemCount);
 
@@ -34,11 +33,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             }
             coreItem.OriginalParent = otherSlot.transform;
             otherSlot.OnItemChanged(coreItem);
+            Inventory.Instance.SynchronizeQuickAccessPanel();
         }
         catch { }
     }
     public virtual void OnItemChanged(InventoryItem item)
     {
+        // print(transform.name);
     }
+    
     public virtual InventoryItem GetHandlingItem() => transform.GetComponentInChildren<InventoryItem>();
 }

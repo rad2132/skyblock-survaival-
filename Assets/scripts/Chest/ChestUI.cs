@@ -24,17 +24,16 @@ public class ChestUI : MonoBehaviour
     }
 
     public void OnChestOpen(List<ItemData> chestItems, ChestHandler chest)
-    {
+    {        
         HandlingChest = chest;
-
+       
         for (int i = 0; i < Slots.Count; i++)
         {
             InventoryItem item = Slots[i].GetHandlingItem();
             item.SetItem(chestItems[i].ID);
             try
             {
-
-                item.OnCountChange(chestItems[i].Count - 1);
+               item.OnCountChange(chestItems[i].Count - 1);
             }
             catch { }
         }

@@ -55,6 +55,7 @@ public class Workbench : MonoBehaviour
                 _workbench3x3.ResultSlot.GetHandlingItem().ResetItem();
             }
         }
+        Inventory.Instance.SynchronizeQuickAccessPanel();
     }
     public void OnItemCreated()
     {

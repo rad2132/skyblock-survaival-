@@ -73,7 +73,7 @@ namespace CraftingSystem
                 
             inventoryItem.ClearItem();
             item.OnCountChange(-1);
-            inventoryItem.SetItem(recipeItemId);
+            inventoryItem.SetItem(recipeItemId);          
             return true;
         }
     }

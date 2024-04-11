@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,12 +27,14 @@ public class Inventory : MonoBehaviour
         SelectedSlot = QuickAccessPanel[slotNumber - 1];
         int id = SelectedSlot.GetHandlingItem().GetItemData().ID;
         AddITemInHand(id == -1 ? null : ItemsDataHandler.Instance.Data.items[id].ItemPrefab);
+      
     }
 
     public bool AddItem(Item item)
-    {
+    {       
         if (item.ItemType == ItemType.Tool || item.StackSize == 1)
         {
+            
             foreach (var invItem in QuickAccessPanel.Select(slot => slot.GetHandlingItem()).Where(invItem => invItem.GetItemData().ID == -1))
             {
                 invItem.SetItem(item.ID);
@@ -44,6 +47,7 @@ public class Inventory : MonoBehaviour
                 return true;
             }
         }
+        
         
         List<InventorySlot> slots = new List<InventorySlot>(QuickAccessPanel);
         slots.AddRange(GeneralInventory);
@@ -80,6 +84,7 @@ public class Inventory : MonoBehaviour
             }
         }
         
+        
         List<InventorySlot> slots = new List<InventorySlot>(QuickAccessPanel);
         slots.AddRange(GeneralInventory);
 
@@ -97,10 +102,49 @@ public class Inventory : MonoBehaviour
 
         return false;
     }
-    
+    /*
+    public void AddQuickAccessPanel(int id)
+    {
+        InventoryItem quickAccess;
+        InventoryItem generalAccess;
+        foreach (var quickinvItem in QuickAccessPanel)
+        {
+            if (quickinvItem.SlotNumber==id)
+            {
+                quickAccess = quickinvItem.GetComponentInChildren<InventoryItem>();// invItem.GetComponentInChildren<InventoryItem>().ResetItem();
+                foreach (var generalinvItem in GeneralInventory)
+                {
+                    if (generalinvItem.SlotNumber == id)
+                    {
+                        generalAccess = generalinvItem.GetComponentInChildren<InventoryItem>();
+                            quickAccess.Copu(generalAccess);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    }
+    public void RemoveQuickAccessPanel(int id)
+    {
+        foreach (var quickinvItem in QuickAccessPanel)
+        {
+            if (quickinvItem.SlotNumber == id)
+            {
+                quickinvItem.GetComponentInChildren<InventoryItem>().ResetItem();               
+                break;
+            }
+        }
+    }*/
+
+    public void SynchronizeQuickAccessPanel()
+    {
+        StartCoroutine(SynchronizePanel());
+    }
+
     public void AddITemInHand(ItemHandler itemPrefab)
-    {  
-        if(Hand.childCount == 1)
+    {
+        if (Hand.childCount == 1)
         {
             Destroy(Hand.GetChild(0).gameObject);
         }
@@ -121,13 +165,22 @@ public class Inventory : MonoBehaviour
     }
 
     public void DropItem(Item item, int count)
-    {
-        RemoveItem(item);
-        
+    {        
+        RemoveItem(item);      
         for (int i = count; i > 0; i--)
         {
             Transform spawnedItem = Instantiate(item.ItemPrefab.transform, _itemSpawner.position, Quaternion.identity);
             spawnedItem.localScale = Vector3.one * 0.3f;
+        }
+    }
+
+    //Говнокод но работает
+    private IEnumerator SynchronizePanel()
+    {
+        yield return new WaitForSeconds(.1f);
+        for (int i = 0; i < QuickAccessPanel.Count - 1; i++)
+        {
+            QuickAccessPanel[i].GetComponentInChildren<InventoryItem>().Copu(GeneralInventory[i].GetComponentInChildren<InventoryItem>());
         }
     }
 }

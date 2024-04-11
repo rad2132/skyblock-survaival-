@@ -27,7 +27,7 @@ namespace InventorySystem
             {
                 var inventoryItem = _quickAccessInventoryPanelSlots[i].GetComponentInChildren<InventoryItem>();
                 inventoryItem.SetItem(Inventory.Instance.QuickAccessPanel[i].GetHandlingItem().GetItemData().ID);
-            }
+            }            
         }
 
         public void OnQuickAccessInventoryChestPanelRendering()
@@ -36,7 +36,7 @@ namespace InventorySystem
             {
                 var inventoryItem = _quickAccessInventoryChestPanelSlots[i].GetComponentInChildren<InventoryItem>();
                 inventoryItem.SetItem(Inventory.Instance.QuickAccessPanel[i].GetHandlingItem().GetItemData().ID);
-            }
+            }          
         }
     }
 }
