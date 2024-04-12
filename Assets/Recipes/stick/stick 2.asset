@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: accaf2b2ace343419224f0856d0c3c15, type: 3}
-  m_Name: Qak 2
+  m_Name: stick 2
   m_EditorClassIdentifier: 
   <UpperLeft>k__BackingField: {fileID: 0}
-  <UpperCenter>k__BackingField: {fileID: 0}
+  <UpperCenter>k__BackingField: {fileID: 1957332200928059749, guid: 54815cf2b97295c479f9e98eb6cb970d, type: 3}
   <UpperRight>k__BackingField: {fileID: 0}
   <MiddleLeft>k__BackingField: {fileID: 0}
-  <MiddleCenter>k__BackingField: {fileID: 0}
+  <MiddleCenter>k__BackingField: {fileID: 1957332200928059749, guid: 54815cf2b97295c479f9e98eb6cb970d, type: 3}
   <MiddleRight>k__BackingField: {fileID: 0}
   <LowerLeft>k__BackingField: {fileID: 0}
   <LowerCenter>k__BackingField: {fileID: 0}
   <LowerRight>k__BackingField: {fileID: 0}
-  <Result>k__BackingField: {fileID: 0}
-  <ResultCount>k__BackingField: 1
+  <Result>k__BackingField: {fileID: 4836553514533484632, guid: feabed13c7c5da0468ac6c23f55a656e, type: 3}
+  <ResultCount>k__BackingField: 4
   <SingleItemRequiered>k__BackingField: 1
