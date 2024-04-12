@@ -835,3 +835,78 @@ MonoBehaviour:
     Health: 50
     Satiety: 10
     SaturationTime: 40
+  - name: Stick
+    StackSize: 64
+    ID: 45
+    ItemType: 3
+    ItemPrefab: {fileID: 4836553514533484632, guid: feabed13c7c5da0468ac6c23f55a656e, type: 3}
+    Icon: {fileID: -1762543520, guid: 8e65ff4d1f364124f9d1ceed55935776, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 1
+    Damage: 6
+    Health: 50
+    Satiety: 10
+    SaturationTime: 40
+  - name: SeedsWheat
+    StackSize: 64
+    ID: 46
+    ItemType: 4
+    ItemPrefab: {fileID: 4836553514533484632, guid: 4b90770008d68a341ba4e82caffac92a, type: 3}
+    Icon: {fileID: 1047952491, guid: 8e65ff4d1f364124f9d1ceed55935776, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 1
+    Damage: 6
+    Health: 50
+    Satiety: 10
+    SaturationTime: 40
+  - name: Bread
+    StackSize: 64
+    ID: 47
+    ItemType: 2
+    ItemPrefab: {fileID: 4836553514533484632, guid: 603ce4f20b10a4c44859cc3b0837346b, type: 3}
+    Icon: {fileID: 215421304, guid: 8e65ff4d1f364124f9d1ceed55935776, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 1
+    Damage: 6
+    Health: 50
+    Satiety: 10
+    SaturationTime: 40
+  - name: SteelIngot
+    StackSize: 64
+    ID: 48
+    ItemType: 3
+    ItemPrefab: {fileID: 4836553514533484632, guid: d589d0e99250c0b438cf70bc0dd589c3, type: 3}
+    Icon: {fileID: 1747127264, guid: 8e65ff4d1f364124f9d1ceed55935776, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 2
+    ToolType: 1
+    Damage: 6
+    Health: 50
+    Satiety: 10
+    SaturationTime: 40
+  - name: Wheat
+    StackSize: 64
+    ID: 49
+    ItemType: 3
+    ItemPrefab: {fileID: 4836553514533484632, guid: be284d83fce9e4d4b91c61fa4574f827, type: 3}
+    Icon: {fileID: 1765721365, guid: 8e65ff4d1f364124f9d1ceed55935776, type: 3}
+    Strength: 0
+    MinesBy: []
+    DamageScale: []
+    ToolMaterial: 0
+    ToolType: 1
+    Damage: 6
+    Health: 50
+    Satiety: 10
+    SaturationTime: 40
