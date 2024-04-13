@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accaf2b2ace343419224f0856d0c3c15, type: 3}
+  m_Name: Shovel_Stone7
+  m_EditorClassIdentifier: 
+  <UpperLeft>k__BackingField: {fileID: 0}
+  <UpperCenter>k__BackingField: {fileID: 4851307691875228750, guid: 2b803ab368415bd4890f847fb477621f, type: 3}
+  <UpperRight>k__BackingField: {fileID: 0}
+  <MiddleLeft>k__BackingField: {fileID: 0}
+  <MiddleCenter>k__BackingField: {fileID: 4836553514533484632, guid: feabed13c7c5da0468ac6c23f55a656e, type: 3}
+  <MiddleRight>k__BackingField: {fileID: 0}
+  <LowerLeft>k__BackingField: {fileID: 0}
+  <LowerCenter>k__BackingField: {fileID: 4836553514533484632, guid: feabed13c7c5da0468ac6c23f55a656e, type: 3}
+  <LowerRight>k__BackingField: {fileID: 0}
+  <Result>k__BackingField: {fileID: 5637681253965251659, guid: a31f48aedb0c6424db3128cb91d3d128, type: 3}
+  <ResultCount>k__BackingField: 1
+  <SingleItemRequiered>k__BackingField: 1
