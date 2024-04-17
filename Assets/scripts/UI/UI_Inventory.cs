@@ -17,8 +17,8 @@ public class UI_Inventory : MonoBehaviour
     
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+       // Cursor.lockState = CursorLockMode.Locked;
+      //  Cursor.visible = false;
     }
     public void SwitchUIVisibility(bool openWorkbench2x2,bool openWorkbench3x3, bool openChest,bool openFurnace)
     {
@@ -52,9 +52,10 @@ public class UI_Inventory : MonoBehaviour
     
     public void OnUISwitch(InputAction.CallbackContext context)
     {
-        EventAggregator.QuickAccessInventoryPanelRendering.Publish();
+       
         
         if (context.performed) SwitchUIVisibility(true, false, false,false);
+        EventAggregator.QuickAccessInventoryPanelRendering.Publish();
     }
 
     public void OnSlot1Selected(InputAction.CallbackContext context)

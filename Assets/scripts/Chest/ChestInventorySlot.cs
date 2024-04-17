@@ -5,6 +5,8 @@ public class ChestInventorySlot : InventorySlot
     {
         base.OnDrop(eventData);
         ChestUI.Instance.OnItemChanged(SlotNumber);
+
+       
     }
     public override void OnItemChanged(InventoryItem item)
     {

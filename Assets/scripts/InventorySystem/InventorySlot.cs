@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -38,9 +39,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         catch { }
     }
     public virtual void OnItemChanged(InventoryItem item)
-    {
-        // print(transform.name);
+    {        
+       // print(item.GetItemData().ID);
     }
-    
+   
+   
     public virtual InventoryItem GetHandlingItem() => transform.GetComponentInChildren<InventoryItem>();
 }

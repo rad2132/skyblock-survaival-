@@ -24,6 +24,7 @@ public class Inventory : MonoBehaviour
 
     public void SelectSlot(int slotNumber)
     {
+
         SelectedSlot = QuickAccessPanel[slotNumber - 1];
         int id = SelectedSlot.GetHandlingItem().GetItemData().ID;
         AddITemInHand(id == -1 ? null : ItemsDataHandler.Instance.Data.items[id].ItemPrefab);
@@ -47,8 +48,7 @@ public class Inventory : MonoBehaviour
                 return true;
             }
         }
-        
-        
+                
         List<InventorySlot> slots = new List<InventorySlot>(QuickAccessPanel);
         slots.AddRange(GeneralInventory);
 
@@ -139,7 +139,12 @@ public class Inventory : MonoBehaviour
 
     public void SynchronizeQuickAccessPanel()
     {
-        StartCoroutine(SynchronizePanel());
+        StartCoroutine(SynchronizePanel(false));
+    }
+
+    public void SynchronizeGeneralInventory()
+    {
+        StartCoroutine(SynchronizePanel(true));
     }
 
     public void AddITemInHand(ItemHandler itemPrefab)
@@ -175,12 +180,22 @@ public class Inventory : MonoBehaviour
     }
 
     //Говнокод но работает
-    private IEnumerator SynchronizePanel()
+    private IEnumerator SynchronizePanel(bool isGeneralPanel)
     {
-        yield return new WaitForSeconds(.1f);
-        for (int i = 0; i < QuickAccessPanel.Count - 1; i++)
+        yield return new WaitForEndOfFrame();
+        if (isGeneralPanel) 
         {
-            QuickAccessPanel[i].GetComponentInChildren<InventoryItem>().Copu(GeneralInventory[i].GetComponentInChildren<InventoryItem>());
+            for (int i = 0; i < QuickAccessPanel.Count - 1; i++)
+            {
+                GeneralInventory[i].GetComponentInChildren<InventoryItem>().Copu(QuickAccessPanel[i].GetComponentInChildren<InventoryItem>());
+            }
+        }
+        else
+        {
+            for (int i = 0; i < QuickAccessPanel.Count - 1; i++)
+            {
+                QuickAccessPanel[i].GetComponentInChildren<InventoryItem>().Copu(GeneralInventory[i].GetComponentInChildren<InventoryItem>());
+            }
         }
     }
 }

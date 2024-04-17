@@ -6,8 +6,8 @@ using UnityEngine;
 public class ChestUI : MonoBehaviour
 {
     public static ChestUI Instance;
-
     public List<InventorySlot> Slots = new();
+ 
     public ChestHandler HandlingChest { get; private set; }
     
     private void Awake()
@@ -39,13 +39,12 @@ public class ChestUI : MonoBehaviour
         }
     }
     public void OnItemChanged(int slotID)
-    {
+    {       
         StartCoroutine(ChangeItem(slotID));
     }
     private IEnumerator ChangeItem(int slotID)
     {
-        yield return new WaitForEndOfFrame();
-
+        yield return new WaitForEndOfFrame();    
         HandlingChest.OnItemChange(slotID, Slots[slotID].GetHandlingItem().GetItemData());
     }
 }

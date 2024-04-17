@@ -21,6 +21,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     private ItemData _handlingItem;
     private InventorySlot _parentSlot;
     private int _health;
+    private Transform DragObject;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
+
         _slotIcon.raycastTarget = false;
         OriginalParent = transform.parent;
         transform.SetParent(DragItemsPanel.Instance.transform);
@@ -38,32 +40,33 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public virtual void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
+
     }
+       
 
     public virtual void OnEndDrag(PointerEventData eventData)
     {
+
         _slotIcon.raycastTarget = true;
-        transform.SetParent(OriginalParent);
-       
+        transform.SetParent(OriginalParent); 
     }
 
     public virtual void SetItem(int itemID)
     {
-        //print(transform.parent.name);
         if (itemID == -1)
         {
-            ResetItem();
+            ResetItem();          
             return;
         }
-
-        Item item = ItemsDataHandler.Instance.Data.items[itemID];
-        _handlingItem = new ItemData(item.ID, 1);
-        _slotIcon.sprite = item.Icon;
-        //print(_slotIcon.sprite);
-        _slotIcon.color = Color.white;
-        _itemsCounter.text = string.Empty;
-        _health = item.Health;
-
+       
+            Item item = ItemsDataHandler.Instance.Data.items[itemID];
+            _handlingItem = new ItemData(item.ID, 1);
+            _slotIcon.sprite = item.Icon;
+            _slotIcon.color = Color.white;
+            _itemsCounter.text = string.Empty;
+            _health = item.Health;
+        
+      
         if (Inventory.Instance.SelectedSlot == _parentSlot)
         {            
             Inventory.Instance.AddITemInHand(ItemsDataHandler.Instance.Data.items[GetItemData().ID].ItemPrefab);
@@ -81,33 +84,35 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
 
     public virtual void OnCountChange(int count)
     {
-
+       
         if (_handlingItem == null) 
         {  
             return;
         }       
-        _handlingItem.Count += count;
+        _handlingItem.Count += count;   
         if (_handlingItem.Count == 1)
         {
             _itemsCounter.text = string.Empty;
             return;
         }
         
-        if (_handlingItem.Count == 0)
+        if (_handlingItem.Count <= 0)
         {
             ResetItem();         
             return;
-        }
-       
+        }       
         _itemsCounter.text = _handlingItem.Count.ToString();
+        Inventory.Instance.SynchronizeGeneralInventory();
     }
+
     [ContextMenu("ResetItem")]
     public virtual void ResetItem()
-    {        
+    {       
         if (Inventory.Instance.SelectedSlot == _parentSlot)
         {
             Inventory.Instance.AddITemInHand(null);
         }
+
         _handlingItem = null;
         _slotIcon.sprite = null;
         _slotIcon.color = Color.clear;
