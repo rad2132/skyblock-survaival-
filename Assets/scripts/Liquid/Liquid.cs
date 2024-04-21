@@ -19,7 +19,7 @@ public class Liquid : MonoBehaviour
     public int BucketOFLiquidID;
     public int NumberInStream = 0;   
     private MeshRenderer Mesh;
-    private Vector3 ParentScale;
+
 
     public virtual void ContinueStream()
     {
@@ -48,7 +48,9 @@ public class Liquid : MonoBehaviour
             if (liquid != null && liquid.LiquidType != this.LiquidType)
             {
                 liquid.OnLiquidDestroy();
-                Instantiate(CollisionResult, transform.position + Vector3.back, Quaternion.identity);               
+                OnLiquidDestroy();
+                Instantiate(CollisionResult, transform.position + Vector3.back, Quaternion.identity);
+              
                 return false;
             }
             else if (liquid != null && !liquid.AboutToDry)
@@ -60,8 +62,7 @@ public class Liquid : MonoBehaviour
 
         Liquid newLiqudBlock;
         if (streamDirection == Vector3.down)
-        {
-            print(transform.localScale.y);
+        {         
             float yPosition = ((1f - transform.localScale.y) / 2f);
             Vector3 position = new  Vector3(transform.position.x, transform.position.y + yPosition, transform.position.z);
 
